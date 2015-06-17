@@ -22,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/icon2"
+        android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
         android:tag="Phone"/>
@@ -30,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/icon3"
+        android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
         android:tag="Food"/>
@@ -38,62 +40,79 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/icon4"
+        android:onClick="openCategory"
         android:minHeight="100dp"
-        android:minWidth="100dp" />
+        android:minWidth="100dp"
+        android:tag="Luxus"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/icon5"
+        android:onClick="openCategory"
         android:minHeight="100dp"
-        android:minWidth="100dp" />
+        android:minWidth="100dp"
+        android:tag="Apartment"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/icon6"
+        android:onClick="openCategory"
         android:minHeight="100dp"
-        android:minWidth="100dp" />
+        android:minWidth="100dp"
+    android:tag="Phone"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/icon7"
+        android:onClick="openCategory"
         android:minHeight="100dp"
-        android:minWidth="100dp" />
+        android:minWidth="100dp"
+        android:tag="Food"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/icon8"
+        android:onClick="openCategory"
         android:minHeight="100dp"
-        android:minWidth="100dp" />
+        android:minWidth="100dp"
+        android:tag="Luxus"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/icon9"
+        android:onClick="openCategory"
         android:minHeight="100dp"
-        android:minWidth="100dp" />
+        android:minWidth="100dp"
+    android:tag="Apartment"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/icon10"
+        android:onClick="openCategory"
         android:minHeight="100dp"
-        android:minWidth="100dp" />
+        android:minWidth="100dp"
+        android:tag="Luxus"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/icon11"
+        android:onClick="openCategory"
         android:minHeight="100dp"
-        android:minWidth="100dp" />
+        android:minWidth="100dp"
+        android:tag="Apartment"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/icon12"
         android:minHeight="100dp"
-        android:minWidth="100dp" />
+        android:minWidth="100dp"
+        android:tag="Apartment"/>
 </GridLayout>
