@@ -1,6 +1,7 @@
 package headfirstandroiddevelopment.budgeteer;
 
 import android.content.Intent;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -67,6 +68,7 @@ public class MainActivity extends ActionBarActivity {
     }
     public void openCategory(View v){
         Intent intent = new Intent(getApplicationContext(), Category.class);
+        /* TODO: ActionListener */
         ImageButton icon = (ImageButton) findViewById(R.id.icon1);
         String iconName = icon.getTag().toString();
         intent.putExtra("name", iconName);
