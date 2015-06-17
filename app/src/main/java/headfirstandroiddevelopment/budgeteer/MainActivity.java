@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -66,12 +70,13 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void openCategory(View v){
+
+    public void openCategory(View v) {
+
         Intent intent = new Intent(getApplicationContext(), Category.class);
-        /* TODO: ActionListener */
-        ImageButton icon = (ImageButton) findViewById(R.id.icon1);
-        String iconName = icon.getTag().toString();
-        intent.putExtra("name", iconName);
+        String category = v.getTag().toString();
+
+        intent.putExtra("name", category);
         startActivity(intent);
     }
 }
