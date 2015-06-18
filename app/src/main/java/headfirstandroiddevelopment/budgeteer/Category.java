@@ -7,6 +7,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,7 +25,7 @@ public class Category extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        EditText editAmount = (EditText) findViewById(R.id.editText);
+        EditText editAmount = (EditText) findViewById(R.id.amount);
         final String valueAmount = editAmount.getText().toString();
 
         Intent intent = getIntent();
@@ -57,5 +59,27 @@ public class Category extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void save(View v){
+        EditText amount = (EditText) findViewById(R.id.amount);
+        DatePicker date = (DatePicker) findViewById(R.id.datePicker);
+
+        if (!amount.getText().toString().equals("")) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            int day = date.getDayOfMonth();
+            int month = date.getMonth() + 1;
+            int year = date.getYear();
+            /* TODO: Categoryname mitgeben */
+            /*String category = intent.getStringExtra("name");*/
+            /*intent.putExtra("name", category);*/
+            intent.putExtra("amount", amount.getText().toString());
+            intent.putExtra("day", day);
+            intent.putExtra("month",  month);
+            intent.putExtra("year",  year);
+
+            startActivity(intent);
+        }
+        else
+           Toast.makeText(getApplicationContext(), "Bitte Betrag eingeben", Toast.LENGTH_LONG).show();
     }
 }
