@@ -77,6 +77,8 @@ public class MainActivity extends ActionBarActivity {
         String category = v.getTag().toString();
 
         intent.putExtra("name", category);
+        String nameLowercase = category.toLowerCase();
+        intent.putExtra("iconName", nameLowercase);
         startActivity(intent);
     }
 }
