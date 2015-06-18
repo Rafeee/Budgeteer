@@ -7,14 +7,30 @@
     tools:context="headfirstandroiddevelopment.budgeteer.category"
     android:orientation="vertical">
 
-    <TextView android:text="" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/categoryTitle" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/categoryTitle"
+            android:textStyle="bold"
+            android:textSize="32dp"
+            android:gravity="left" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iconCategory"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
-        android:background="#c0c0c0"/>
+        android:background="#c0c0c0" />
 
     <DatePicker
         android:layout_width="wrap_content"
@@ -51,7 +67,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit"
+            android:text="Save"
             android:id="@+id/button" />
 
     </LinearLayout>
