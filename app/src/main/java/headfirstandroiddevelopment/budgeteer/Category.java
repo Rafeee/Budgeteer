@@ -1,13 +1,19 @@
 package headfirstandroiddevelopment.budgeteer;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 
 public class Category extends ActionBarActivity {
@@ -24,6 +30,11 @@ public class Category extends ActionBarActivity {
         String categoryName = intent.getStringExtra("name");
         TextView title = (TextView) findViewById(R.id.categoryTitle);
         title.setText(categoryName);
+
+        String iconName = intent.getStringExtra("iconName");
+        ImageView ivIcon = (ImageView) findViewById(R.id.iconCategory);
+        ivIcon.setImageResource(getResources().getIdentifier(iconName, "drawable", getPackageName()));
+
     }
 
     @Override
