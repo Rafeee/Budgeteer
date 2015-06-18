@@ -1,17 +1,12 @@
 package headfirstandroiddevelopment.budgeteer;
 
 import android.content.Intent;
-import android.net.wifi.p2p.WifiP2pManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -29,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
         ImageButton icon3 = (ImageButton) findViewById(R.id.icon3);
         icon3.setImageResource(R.drawable.shoppingbasket);
         ImageButton icon4 = (ImageButton) findViewById(R.id.icon4);
-        icon4.setImageResource(R.drawable.yacht);
+        icon4.setImageResource(R.drawable.luxus);
         ImageButton icon5 = (ImageButton) findViewById(R.id.icon5);
         icon5.setImageResource(R.drawable.apartment);
         ImageButton icon6 = (ImageButton) findViewById(R.id.icon6);
@@ -37,11 +32,11 @@ public class MainActivity extends ActionBarActivity {
         ImageButton icon7 = (ImageButton) findViewById(R.id.icon7);
         icon7.setImageResource(R.drawable.shoppingbasket);
         ImageButton icon8 = (ImageButton) findViewById(R.id.icon8);
-        icon8.setImageResource(R.drawable.yacht);
+        icon8.setImageResource(R.drawable.luxus);
         ImageButton icon9 = (ImageButton) findViewById(R.id.icon9);
         icon9.setImageResource(R.drawable.apartment);
         ImageButton icon10 = (ImageButton) findViewById(R.id.icon10);
-        icon10.setImageResource(R.drawable.yacht);
+        icon10.setImageResource(R.drawable.luxus);
         ImageButton icon11 = (ImageButton) findViewById(R.id.icon11);
         icon11.setImageResource(R.drawable.apartment);
         ImageButton icon12 = (ImageButton) findViewById(R.id.icon12);
@@ -78,6 +73,7 @@ public class MainActivity extends ActionBarActivity {
 
         intent.putExtra("name", category);
         String nameLowercase = category.toLowerCase();
+
         intent.putExtra("iconName", nameLowercase);
         startActivity(intent);
     }
