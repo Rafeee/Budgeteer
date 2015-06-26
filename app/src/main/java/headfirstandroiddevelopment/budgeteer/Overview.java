@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
+
 
 public class Overview extends ActionBarActivity {
 
@@ -24,33 +26,8 @@ public class Overview extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
+        getInputs();
 
-
-
-
-
-        Intent intent = getIntent();
-        if (intent.hasExtra("amount")) {
-        /*if(intent.getStringExtra("year")!= ""){*/
-            int day = intent.getIntExtra("day", 0);
-            int month = intent.getIntExtra("month", 0);
-            int year = intent.getIntExtra("year", 0);
-            String category = intent.getStringExtra("name");
-            String amount = intent.getStringExtra("amount");
-            String message = "$" + String.valueOf(amount) + " am " + String.valueOf(day) + "." + String.valueOf(month) + "." + String.valueOf(year) + " in " + category + " gespeichert";
-
-            /** Dem User mitteilen, dass Eingabe gespeichert wurde */
-            Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.BOTTOM, 0, 150);
-            toast.show();
-
-            /* Daten in Liste ausgeben */
-            ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-            adapter.add(intent.getStringExtra("name"));
-            ListView list = (ListView) findViewById(R.id.listoverview);
-
-        }
         /*http://android-developers.de/thread/414-der-umgang-mit-der-sqlite-datenbank/*/
         onCreateDBAndDBTabled();
         dropDB();
@@ -109,5 +86,33 @@ public class Overview extends ActionBarActivity {
     public void dropDB(){
 
 
+    }
+    public void getInputs(){
+        Intent intent = getIntent();
+        if (intent.hasExtra("amount")) {
+            int day = intent.getIntExtra("day", 0);
+            int month = intent.getIntExtra("month", 0);
+            int year = intent.getIntExtra("year", 0);
+            String date = day + "." + month + "." +year;
+
+            String category = intent.getStringExtra("name");
+
+            NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
+            String message = String.valueOf( ".- am " + String.valueOf(day) + "." + String.valueOf(month) + "." + String.valueOf(year) + " in " + category + " gespeichert");
+
+            /** Dem User mitteilen, dass Eingabe gespeichert wurde */
+            Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.BOTTOM, 0, 150);
+            toast.show();
+
+            /* Daten in Liste ausgeben */
+            ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+            adapter.add("Übersicht: " +category);
+            adapter.add("Speicherdatum: "+date);
+
+            ListView list = (ListView) findViewById(R.id.listoverview);
+            list.setAdapter(adapter);
+        }
     }
 }

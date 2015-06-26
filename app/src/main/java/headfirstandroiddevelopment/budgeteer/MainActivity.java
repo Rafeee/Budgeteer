@@ -44,22 +44,7 @@ public class MainActivity extends ActionBarActivity {
         ImageButton icon12 = (ImageButton) findViewById(R.id.icon12);
         icon12.setImageResource(R.drawable.apartment);
 
-        /*Nur ausführen wenn man von Category zurückkommt*/
-        Intent intent = getIntent();
-        if (intent.getIntExtra("day", 0) != 0) {
-        /*if(intent.getStringExtra("year")!= ""){*/
-            int day = intent.getIntExtra("day", 0);
-            int month = intent.getIntExtra("month", 0);
-            int year = intent.getIntExtra("year", 0);
-            String category = intent.getStringExtra("name");
-            String amount = intent.getStringExtra("amount");
-            String message = "$" + String.valueOf(amount) + " am " + String.valueOf(day) + "." + String.valueOf(month) + "." + String.valueOf(year) + " in " + category + " gespeichert";
 
-            Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.BOTTOM, 0, 150);
-            toast.show();
-        }
     }
 
     @Override

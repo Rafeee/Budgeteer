@@ -29,8 +29,7 @@ public class Category extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        EditText editAmount = (EditText) findViewById(R.id.amount);
-        final String valueAmount = editAmount.getText().toString();
+
 
         Intent intent = getIntent();
         String categoryName = intent.getStringExtra("name");
@@ -64,7 +63,9 @@ public class Category extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
     public void save(View v){
-        EditText amount = (EditText) findViewById(R.id.amount);
+        EditText editAmount = (EditText) findViewById(R.id.amount);
+        Double amount = Double.parseDouble(editAmount.getText().toString());
+
         DatePicker date = (DatePicker) findViewById(R.id.datePicker);
 
         if (!amount.getText().toString().equals("")) {
@@ -76,7 +77,7 @@ public class Category extends ActionBarActivity {
             int month = date.getMonth() + 1;
             int year = date.getYear();
 
-            intent.putExtra("amount", amount.getText().toString());
+            intent.putExtra("amount", 1.2222);
             intent.putExtra("day", day);
             intent.putExtra("month",  month);
             intent.putExtra("year",  year);
