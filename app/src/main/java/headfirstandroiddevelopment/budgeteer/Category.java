@@ -68,7 +68,7 @@ public class Category extends ActionBarActivity {
 
         DatePicker date = (DatePicker) findViewById(R.id.datePicker);
 
-        if (!amount.getText().toString().equals("")) {
+        if (!amount.equals("")) {
             Intent intent = new Intent(getApplicationContext(), Overview.class);
 
             TextView category = (TextView) findViewById(R.id.categoryTitle);
