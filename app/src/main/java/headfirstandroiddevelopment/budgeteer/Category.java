@@ -1,8 +1,12 @@
 package headfirstandroiddevelopment.budgeteer;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.provider.BaseColumns;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -57,7 +61,6 @@ public class Category extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
     public void save(View v){
@@ -65,21 +68,26 @@ public class Category extends ActionBarActivity {
         DatePicker date = (DatePicker) findViewById(R.id.datePicker);
 
         if (!amount.getText().toString().equals("")) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), Overview.class);
+
+            TextView category = (TextView) findViewById(R.id.categoryTitle);
+            String categoryName = category.getText().toString();
             int day = date.getDayOfMonth();
             int month = date.getMonth() + 1;
             int year = date.getYear();
-            /* TODO: Categoryname mitgeben */
-            /*String category = intent.getStringExtra("name");*/
-            /*intent.putExtra("name", category);*/
+
             intent.putExtra("amount", amount.getText().toString());
             intent.putExtra("day", day);
             intent.putExtra("month",  month);
             intent.putExtra("year",  year);
+            intent.putExtra("name", categoryName);
 
             startActivity(intent);
         }
+        /** Dem Benutzer mitteilen, dass keine Eingabe gemacht wurde
+         *
+         */
         else
-           Toast.makeText(getApplicationContext(), "Bitte Betrag eingeben", Toast.LENGTH_LONG).show();
+           Toast.makeText(getApplicationContext(), "Please Enter Amount", Toast.LENGTH_LONG).show();
     }
 }

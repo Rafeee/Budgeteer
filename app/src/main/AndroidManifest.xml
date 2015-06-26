@@ -20,6 +20,10 @@
             android:name=".Category"
             android:label="@string/title_activity_category" >
         </activity>
+        <activity
+            android:name=".Overview"
+            android:label="@string/title_activity_overview" >
+        </activity>
     </application>
 
 </manifest>
