@@ -208,7 +208,7 @@ public class Overview extends ActionBarActivity implements NavigationDrawerFragm
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
+            ((Overview) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
