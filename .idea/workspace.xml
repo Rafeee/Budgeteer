@@ -25,17 +25,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f61dd0f-4791-4f93-bddf-f58a0bee794f" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\bbaety\AndroidStudioProjects\Budgeteer\app\src\main\java\headfirstandroiddevelopment\budgeteer\NavigationDrawerFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\bbaety\AndroidStudioProjects\Budgeteer\app\src\main\res\layout\fragment_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\bbaety\AndroidStudioProjects\Budgeteer\app\src\main\res\layout\fragment_navigation_drawer.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/headfirstandroiddevelopment/budgeteer/Category.java" afterPath="$PROJECT_DIR$/app/src/main/java/headfirstandroiddevelopment/budgeteer/Category.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/headfirstandroiddevelopment/budgeteer/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/headfirstandroiddevelopment/budgeteer/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/headfirstandroiddevelopment/budgeteer/Overview.java" afterPath="$PROJECT_DIR$/app/src/main/java/headfirstandroiddevelopment/budgeteer/Overview.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_category.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_category.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_overview.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_overview.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Budgeteer.iws" />
@@ -2009,7 +1998,13 @@
       <option name="project" value="LOCAL" />
       <updated>1435581573725</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Navigation Drawer finished&#10;">
+      <created>1435675125943</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1435675125943</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2073,7 +2068,8 @@
     <MESSAGE value="!amount.equals&#10;" />
     <MESSAGE value="Navigation Drawer&#10;" />
     <MESSAGE value="Navigation Drawer overview fixed&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Navigation Drawer overview fixed&#10;" />
+    <MESSAGE value="Navigation Drawer finished&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Navigation Drawer finished&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2211,6 +2207,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
