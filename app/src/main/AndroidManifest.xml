@@ -28,6 +28,10 @@
             android:name=".ChooseDate"
             android:label="@string/title_activity_choose_date" >
         </activity>
+        <activity
+            android:name=".DatePicker"
+            android:label="@string/title_activity_date_picker" >
+        </activity>
     </application>
 
 </manifest>

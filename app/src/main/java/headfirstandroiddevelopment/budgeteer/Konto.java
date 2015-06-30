@@ -1,4 +1,8 @@
 package headfirstandroiddevelopment.budgeteer;
+
+import java.text.NumberFormat;
+import java.util.Locale;
+
 /**
  * Created by bklemr on 26.06.2015.
  */
@@ -53,8 +57,11 @@ public class Konto {
         this.category = category;
     }
 
+
+
     public String toString() {
-        return getDay() + "." + getMonth() + "." + getYear() + ": " + getCategory() + " -> "+
-                getAmount();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+        String formamount = formatter.format(getAmount());
+        return getDay() + "." + getMonth() + "." + getYear() + ": " +formamount+ " ("+getCategory() + ")";
     }
 }

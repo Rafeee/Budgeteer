@@ -144,7 +144,8 @@
         <Button
             android:layout_width="105dp"
             android:layout_height="wrap_content"
-            android:text="overview"
+            android:text="Overview"
+            android:textAllCaps="false"
             android:id="@+id/button2"
             android:onClick="openOverview" />
     </LinearLayout>

@@ -87,14 +87,57 @@ public class Overview extends ActionBarActivity implements NavigationDrawerFragm
     public void showOverviewByDate(){
         KontoDAO kontoDAO = new KontoDAO(this);
         kontoDAO.openReadable();
-        int day = 1;
-        int month = 6;
-        int year = 2015;
+        Intent intent = getIntent();
+        int day = intent.getIntExtra("day", 0);
+        int month = intent.getIntExtra("month", 0);
+        int year = intent.getIntExtra("year", 0);
 
         List<Konto> kontoByDate = kontoDAO.getKontoByDate(month, year);
         ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
+        String strMonth;
+        switch(month){
+            case 1:
+                strMonth = "Januar";
+                break;
+            case 2:
+                strMonth = "Februar";
+                break;
+            case 3:
+                strMonth = "März";
+                break;
+            case 4:
+                strMonth = "April";
+                break;
+            case 5:
+                strMonth = "Mai";
+                break;
+            case 6:
+                strMonth = "Juni";
+                break;
+            case 7:
+                strMonth = "Juli";
+                break;
+            case 8:
+                strMonth = "August";
+                break;
+            case 9:
+                strMonth = "September";
+                break;
+            case 10:
+                strMonth = "Oktober";
+                break;
+            case 11:
+                strMonth = "November";
+                break;
+            case 12:
+                strMonth = "Dezember";
+                break;
+            default:
+                strMonth = "dini Mueeeeeeeeeeeeeeeeeeeeeeettteeeeeeeeeeeeeeeeeeeeeer";
+                break;
+        }
 
-        adapter.add("Übersicht vom "+day+"."+month+"."+year);
+        adapter.add("Übersicht vom "+strMonth+" "+year+":");
 
         for(Konto konto : kontoByDate){
             adapter.add(konto);

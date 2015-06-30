@@ -5,20 +5,21 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
-public class ChooseDate extends ActionBarActivity {
+public class DatePicker extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_date);
+        setContentView(R.layout.activity_date_picker);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_choose_date, menu);
+        getMenuInflater().inflate(R.menu.menu_date_picker, menu);
         return true;
     }
 
@@ -36,8 +37,17 @@ public class ChooseDate extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void showOverviewByDate(){
+    public void showOverviewByDate(View v){
         Intent intent = new Intent(getApplicationContext(), Overview.class);
 
+        android.widget.DatePicker datepicker = (android.widget.DatePicker) findViewById(R.id.datepicker);
+        int day = datepicker.getDayOfMonth();
+        int month = datepicker.getMonth()+1;
+        int year = datepicker.getYear();
+        intent.putExtra("day", day);
+        intent.putExtra("month", month);
+        intent.putExtra("year", year);
+
+        startActivity(intent);
     }
 }

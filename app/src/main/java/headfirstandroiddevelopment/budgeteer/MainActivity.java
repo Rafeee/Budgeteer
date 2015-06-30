@@ -107,18 +107,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         return super.onOptionsItemSelected(item);
     }
 
-    public void openCategory(View v) {
-
-        Intent intent = new Intent(getApplicationContext(), Category.class);
-        String category = v.getTag().toString();
-
-        intent.putExtra("name", category);
-        String nameLowercase = category.toLowerCase();
-
-        intent.putExtra("iconName", nameLowercase);
-        startActivity(intent);
-    }
-
     @Override
     public void onNavigationDrawerItemSelected(int position) {
 // update the main content by replacing fragments
@@ -134,34 +122,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         actionBar.setTitle(mTitle);
     }
 
-    public void showInputs() {
-        Intent intent = getIntent();
-        if (intent.hasExtra("amount")) {
-            String date = intent.getStringExtra("date");
-            Double amount = intent.getDoubleExtra("amount", 1.0);
-            String category = intent.getStringExtra("name");
-
-
-            /** Betrag als Euro formatieren */
-            /* TODO: Verschiedene Währungen unterscheiden */
-            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
-            String formamount = formatter.format(amount);
-
-            /** Dem User mitteilen, was gespeichert wurde */
-            String message = String.valueOf(formamount + " saved in '" + category + "' \n on " + String.valueOf(date));
-            /* Mit for Schleife die Dauer des Toasts verdoppeln */
-            /*for (int i = 0; i < 2; i++) {*/
-            final Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
-            LinearLayout layout = (LinearLayout) toast.getView();
-            if (layout.getChildCount() > 0) {
-                TextView tv = (TextView) layout.getChildAt(0);
-                tv.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-                    /*toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 20);*/
-                toast.show();
-            }
-
-        }
-    }
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
@@ -176,11 +136,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         }
     }
 
-
-    public void openOverview(View v) {
-        Intent intent = new Intent(getApplicationContext(), Overview.class);
-        startActivity(intent);
-    }
 
     /**
      * A placeholder fragment containing a simple view.
@@ -221,6 +176,47 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
+    public void showInputs() {
+        Intent intent = getIntent();
+        if (intent.hasExtra("amount")) {
+            String date = intent.getStringExtra("date");
+            Double amount = intent.getDoubleExtra("amount", 1.0);
+            String category = intent.getStringExtra("name");
 
+            // Betrag als Euro formatieren
+            // TODO: Verschiedene Währungen unterscheiden
+            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+            String formamount = formatter.format(amount);
+
+            // Dem User mitteilen, was gespeichert wurde
+            String message = String.valueOf(formamount + " saved in '" + category + "' \n on " + String.valueOf(date));
+            // Mit for Schleife die Dauer des Toasts verdoppeln
+            /*for (int i = 0; i < 2; i++) {*/
+            final Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+            LinearLayout layout = (LinearLayout) toast.getView();
+            if (layout.getChildCount() > 0) {
+                TextView tv = (TextView) layout.getChildAt(0);
+                tv.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
+                toast.show();
+            }
+
+        }
+    }
+    public void openCategory(View v) {
+
+        Intent intent = new Intent(getApplicationContext(), Category.class);
+        String category = v.getTag().toString();
+
+        intent.putExtra("name", category);
+        String nameLowercase = category.toLowerCase();
+
+        intent.putExtra("iconName", nameLowercase);
+        startActivity(intent);
+    }
+
+    public void openOverview(View v) {
+        Intent intent = new Intent(getApplicationContext(), DatePicker.class);
+        startActivity(intent);
+    }
 
 }
