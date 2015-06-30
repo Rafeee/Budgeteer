@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -62,6 +63,11 @@ public class Category extends ActionBarActivity implements NavigationDrawerFragm
         ImageView ivIcon = (ImageView) findViewById(R.id.iconCategory);
         ivIcon.setImageResource(getResources().getIdentifier(iconName, "drawable", getPackageName()));
 
+        CheckBox repeatMonth = (CheckBox) findViewById(R.id.repeatMonth);
+        if (title.getText().toString() == "Income"){
+            //TODO String vergleichen mit .equals()
+            repeatMonth.setChecked(true);
+        }
     }
 
     @Override
@@ -99,27 +105,36 @@ public class Category extends ActionBarActivity implements NavigationDrawerFragm
         return super.onOptionsItemSelected(item);
     }
     public void save(View v){
+        /* Eingabe Betrag und Datum in variablen speichern */
         EditText editAmount = (EditText) findViewById(R.id.amount);
-        Double amount = Double.parseDouble(editAmount.getText().toString());
+        String amount = editAmount.getText().toString();
+        DatePicker datepicker = (DatePicker) findViewById(R.id.datePicker);
 
-        DatePicker date = (DatePicker) findViewById(R.id.datePicker);
+        if (!amount.isEmpty()) {
+            TextView categoryView = (TextView) findViewById(R.id.categoryTitle);
+            String category = categoryView.getText().toString();
+            int day = datepicker.getDayOfMonth();
+            int month = datepicker.getMonth() + 1;
+            int year = datepicker.getYear();
+            String date = day+"."+month+"."+year;
 
-        if (!amount.equals("")) {
-            Intent intent = new Intent(getApplicationContext(), Overview.class);
+            Konto konto = new Konto();
+            konto.setDay(day);
+            konto.setMonth(month);
+            konto.setYear(year);
+            konto.setAmount(Double.valueOf(amount));
+            konto.setCategory(category);
 
-            TextView category = (TextView) findViewById(R.id.categoryTitle);
-            String categoryName = category.getText().toString();
-            int day = date.getDayOfMonth();
-            int month = date.getMonth() + 1;
-            int year = date.getYear();
+            KontoDAO kontoDAO = new KontoDAO(this);
+            kontoDAO.openWritable();
+            kontoDAO.insertKonto(konto);
 
-            intent.putExtra("amount", 1.2222);
-            intent.putExtra("day", day);
-            intent.putExtra("month",  month);
-            intent.putExtra("year",  year);
-            intent.putExtra("name", categoryName);
-
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.putExtra("amount", konto.getAmount());
+            intent.putExtra("date", date);
+            intent.putExtra("name", konto.getCategory());
             startActivity(intent);
+
         }
         /** Dem Benutzer mitteilen, dass keine Eingabe gemacht wurde
          *

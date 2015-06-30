@@ -17,17 +17,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.List;
+import java.util.Locale;
 
 
 public class Overview extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
-    final static String MY_DB_NAME = "Budgeteer";
+    /*final static String MY_DB_NAME = "Budgeteer";
     final static String MY_DB_TABLE = "konto";
     final static String tag = "ensacom";
+*/
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
@@ -38,11 +43,7 @@ public class Overview extends ActionBarActivity implements NavigationDrawerFragm
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
-        getInputs();
-
-        /*http://android-developers.de/thread/414-der-umgang-mit-der-sqlite-datenbank/*/
-        onCreateDBAndDBTabled();
-        dropDB();
+        showOverviewByDate();
         /*setContentView(R.layout.activity_main);*/
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
@@ -83,67 +84,57 @@ public class Overview extends ActionBarActivity implements NavigationDrawerFragm
         return super.onOptionsItemSelected(item);
     }
 
-    /** Datenbank und Tabellen erstellen wenn noch nicht vorhanden */
+    public void showOverviewByDate(){
+        KontoDAO kontoDAO = new KontoDAO(this);
+        kontoDAO.openReadable();
+        int day = 1;
+        int month = 6;
+        int year = 2015;
 
-    /** TODO: Testen ob Datenbankconnection funktioniert
-     *
-     */
-    private void onCreateDBAndDBTabled()
-    {
-        SQLiteDatabase myDB = null;
-        try {
-            myDB = this.openOrCreateDatabase(MY_DB_NAME, MODE_PRIVATE, null);
-            myDB.execSQL("CREATE TABLE IF NOT EXISTS " + MY_DB_TABLE
-                            + " (konto_id integer primary key autoincrement, datum integer(100), betrag real(100));");
+        List<Konto> kontoByDate = kontoDAO.getKontoByDate(month, year);
+        ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
 
-            Intent intent = getIntent();
-            int day = intent.getIntExtra("day", 0);
-            Double amount = 12.3; /* zum testen: später double amount */
-             /*String category = intent.getStringExtra("name");*/
+        adapter.add("Übersicht vom "+day+"."+month+"."+year);
 
-            myDB.execSQL("INSERT INTO "+MY_DB_TABLE+" (datum, betrag) "
-                +"VALUES ('"+day+"',"+
-                "'"+amount+
-                "');");
-            Log.v(tag, "Insert new Entry: " + day + ", " + amount);
-            } catch (Exception e){
-                Log.v(tag, e.getMessage());
-            }
+        for(Konto konto : kontoByDate){
+            adapter.add(konto);
+        }
+
+        ListView overview = (ListView) findViewById(R.id.listoverview);
+        overview.setAdapter(adapter);
+        kontoDAO.close();
     }
-    public void dropDB(){
-
-
-    }
-    public void getInputs(){
-        Intent intent = getIntent();
+     /*   Intent intent = getIntent();
         if (intent.hasExtra("amount")) {
             int day = intent.getIntExtra("day", 0);
             int month = intent.getIntExtra("month", 0);
             int year = intent.getIntExtra("year", 0);
             String date = day + "." + month + "." +year;
-
+            Double amount = intent.getDoubleExtra("amount", 1.0);
             String category = intent.getStringExtra("name");
 
-            NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
-            String message = String.valueOf( ".- am " + String.valueOf(day) + "." + String.valueOf(month) + "." + String.valueOf(year) + " in " + category + " gespeichert");
+            // Betrag als Euro formatieren
+            // TODO: Verschiedene Währungen unterscheiden
+            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+            String formamount = formatter.format(amount);
 
-            /** Dem User mitteilen, dass Eingabe gespeichert wurde */
+            // Dem User mitteilen, dass Eingabe gespeichert wurde
+            String message = String.valueOf(formamount+ " am " + String.valueOf(day) + "." + String.valueOf(month) + "." + String.valueOf(year) + " in " + category + " gespeichert");
             Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
             toast.setDuration(Toast.LENGTH_LONG);
             toast.setGravity(Gravity.BOTTOM, 0, 150);
             toast.show();
 
-            /* Daten in Liste ausgeben */
+            // Daten in Liste ausgeben
             ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-            adapter.add("Übersicht: " +category);
-            adapter.add("Speicherdatum: "+date);
+            adapter.add("Übersicht von '" +category+"'");
+
+            adapter.add(date +" : "+formamount);
 
             ListView list = (ListView) findViewById(R.id.listoverview);
             list.setAdapter(adapter);
         }
-    }
-
-
+    }*/
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
