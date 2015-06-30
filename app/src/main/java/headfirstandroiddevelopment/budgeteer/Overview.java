@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
@@ -133,51 +134,21 @@ public class Overview extends ActionBarActivity implements NavigationDrawerFragm
                 strMonth = "Dezember";
                 break;
             default:
-                strMonth = "dini Mueeeeeeeeeeeeeeeeeeeeeeettteeeeeeeeeeeeeeeeeeeeeer";
+                strMonth = "";
                 break;
         }
 
-        adapter.add("Übersicht vom "+strMonth+" "+year+":");
+        TextView title = (TextView) findViewById(R.id.overviewTitle);
+        title.setText(strMonth+" "+year+":");
 
         for(Konto konto : kontoByDate){
             adapter.add(konto);
         }
-
         ListView overview = (ListView) findViewById(R.id.listoverview);
         overview.setAdapter(adapter);
         kontoDAO.close();
     }
-     /*   Intent intent = getIntent();
-        if (intent.hasExtra("amount")) {
-            int day = intent.getIntExtra("day", 0);
-            int month = intent.getIntExtra("month", 0);
-            int year = intent.getIntExtra("year", 0);
-            String date = day + "." + month + "." +year;
-            Double amount = intent.getDoubleExtra("amount", 1.0);
-            String category = intent.getStringExtra("name");
 
-            // Betrag als Euro formatieren
-            // TODO: Verschiedene Währungen unterscheiden
-            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
-            String formamount = formatter.format(amount);
-
-            // Dem User mitteilen, dass Eingabe gespeichert wurde
-            String message = String.valueOf(formamount+ " am " + String.valueOf(day) + "." + String.valueOf(month) + "." + String.valueOf(year) + " in " + category + " gespeichert");
-            Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.BOTTOM, 0, 150);
-            toast.show();
-
-            // Daten in Liste ausgeben
-            ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-            adapter.add("Übersicht von '" +category+"'");
-
-            adapter.add(date +" : "+formamount);
-
-            ListView list = (ListView) findViewById(R.id.listoverview);
-            list.setAdapter(adapter);
-        }
-    }*/
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
