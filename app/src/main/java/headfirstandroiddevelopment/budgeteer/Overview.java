@@ -48,6 +48,7 @@ public class Overview extends BaseActivity {
         day = intent.getIntExtra("day", 0);
         month = intent.getIntExtra("month", 0);
         year = intent.getIntExtra("year", 0);
+        category = intent.getStringExtra("category");
 
         switch(month){
             case 1:

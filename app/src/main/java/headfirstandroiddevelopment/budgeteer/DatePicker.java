@@ -56,7 +56,6 @@ public class DatePicker extends BaseActivity {
         intent.putExtra("day", day);
         intent.putExtra("month", month);
         intent.putExtra("year", year);
-        /*intent.putExtra("cactegory", "test");*/
         intent.putExtra("lastView", "date");
         startActivity(intent);
     }
