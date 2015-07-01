@@ -70,6 +70,7 @@ public class KontoDAO extends BaseDAO {
             konto.setYear(cursor.getInt(2));
             konto.setAmount(cursor.getDouble(3));
             konto.setCategory(cursor.getString(4));
+            konto.setDescription(cursor.getString(5));
             kontoByCategory.add(konto);
         }
         return kontoByCategory;
