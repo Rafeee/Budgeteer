@@ -33,19 +33,23 @@ public class Overview extends BaseActivity {
 
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
-
-    Intent intent = getIntent();
-    int day = intent.getIntExtra("day", 0);
-    int month = intent.getIntExtra("month", 0);
-    int year = intent.getIntExtra("year", 0);
-    String category = intent.getStringExtra("category");
-    String strMonth;
-
+    private int day;
+    private int month;
+    private int year;
+    private String strMonth;
+    private String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
+
+        Intent intent = getIntent();
+       day = intent.getIntExtra("day", 0);
+        month = intent.getIntExtra("month", 0);
+        year = intent.getIntExtra("year", 0);
+        category = intent.getStringExtra("category");
+
 
         switch(month){
             case 1:
