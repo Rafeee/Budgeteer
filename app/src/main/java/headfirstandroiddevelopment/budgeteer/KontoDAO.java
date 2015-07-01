@@ -30,7 +30,7 @@ public class KontoDAO extends BaseDAO {
 
     public List<Konto> getAll() {
         /*     db.query = SELECT: Tablename, Stringarray: (PK, where, where values, group by, filter by row groups, sort) */
-        Cursor cursor = db.query("konto", new String[]{"day", "month", "year", "amount", "category","description"}, null, null, null, null, null, null);
+        Cursor cursor = db.query("konto", new String[]{"day", "month", "year", "amount", "category","description"}, null, null, null, null, null);
         List<Konto> kontiAll = new ArrayList<>();
 
         while (cursor.moveToNext()) {
@@ -41,7 +41,7 @@ public class KontoDAO extends BaseDAO {
     }
 
     public List<Konto> getKontoByDate(int month, int year){
-        Cursor cursor = db.query("konto", new String[]{"day", "month", "year", "amount", "category","description"},"month = ? AND year = ?", new String[]{String.valueOf(month), String.valueOf(year)} , null, null, null, null);
+        Cursor cursor = db.query("konto", new String[]{"day", "month", "year", "amount", "category","description"},"month = ? AND year = ?", new String[]{String.valueOf(month), String.valueOf(year)} , null, null, null);
 
         List<Konto> kontoByDate = new ArrayList<>();
 
