@@ -45,11 +45,9 @@ public class Overview extends BaseActivity {
         setContentView(R.layout.activity_overview);
 
         Intent intent = getIntent();
-       day = intent.getIntExtra("day", 0);
+        day = intent.getIntExtra("day", 0);
         month = intent.getIntExtra("month", 0);
         year = intent.getIntExtra("year", 0);
-        category = intent.getStringExtra("category");
-
 
         switch(month){
             case 1:
@@ -92,12 +90,11 @@ public class Overview extends BaseActivity {
                 strMonth = "";
                 break;
         }
-        showOverviewByDate();
-        /*if(intent.getStringExtra("lastView").equals("date")){
+        if(intent.getStringExtra("lastView").equals("date")){
             showOverviewByDate();
         } else{
             showOverviewByCategory();
-        }*/
+        }
 
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
 
