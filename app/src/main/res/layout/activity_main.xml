@@ -41,7 +41,7 @@
         android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
-        android:tag="Phone"/>
+        android:tag="Clothes"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
         android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
-        android:tag="Food"/>
+        android:tag="Phone"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
         android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
-        android:tag="Luxus"/>
+        android:tag="Car"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
         android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
-        android:tag="Apartment"/>
+        android:tag="Transport"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
         android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
-    android:tag="Phone"/>
+    android:tag="Food"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
         android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
-        android:tag="Food"/>
+        android:tag="Sports"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
         android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
-        android:tag="Luxus"/>
+        android:tag="Health"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -104,7 +104,7 @@
         android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
-    android:tag="Apartment"/>
+    android:tag="Entertainment"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
         android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
-        android:tag="Luxus"/>
+        android:tag="Pets"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -131,17 +131,24 @@
         android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
-        android:tag="Apartment"/>
+        android:tag="Income"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="105dp"
+                    android:layout_height="wrap_content"
+                    android:text="Overview"
+                    android:textAllCaps="false"
+                    android:id="@+id/button2"
+                    android:onClick="openOverview" />
+            </LinearLayout>
+
         </GridLayout>
     </FrameLayout>
-    <!-- android:layout_gravity="start" tells DrawerLayout to treat
-            this as a sliding drawer on the left side for left-to-right
-            languages and on the right side for right-to-left languages.
-            If you're not building against API 17 or higher, use
-            android:layout_gravity="left" instead. -->
-    <!-- The drawer is given a fixed width in dp and extends the full height of
-         the container. -->
-
     <ListView
         android:id="@+id/left_drawer"
         android:layout_width="260dp"

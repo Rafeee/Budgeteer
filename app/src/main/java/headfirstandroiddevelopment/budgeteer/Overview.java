@@ -18,17 +18,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.List;
+import java.util.Locale;
 
 
 public class Overview extends BaseActivity {
 
-    final static String MY_DB_NAME = "Budgeteer";
+    /*final static String MY_DB_NAME = "Budgeteer";
     final static String MY_DB_TABLE = "konto";
     final static String tag = "ensacom";
+*/
 
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
@@ -38,17 +44,12 @@ public class Overview extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
+        showOverviewByDate();
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
 
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
         set(navMenuTitles, navMenuIcons);
-
-        getInputs();
-
-        /*http://android-developers.de/thread/414-der-umgang-mit-der-sqlite-datenbank/*/
-        onCreateDBAndDBTabled();
-        dropDB();
-        /*setContentView(R.layout.activity_main);*/
+        
 
     }
 
@@ -73,65 +74,68 @@ public class Overview extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /** Datenbank und Tabellen erstellen wenn noch nicht vorhanden */
-
-    /**
-     * TODO: Testen ob Datenbankconnection funktioniert
-     */
-    private void onCreateDBAndDBTabled() {
-        SQLiteDatabase myDB = null;
-        try {
-            myDB = this.openOrCreateDatabase(MY_DB_NAME, MODE_PRIVATE, null);
-            myDB.execSQL("CREATE TABLE IF NOT EXISTS " + MY_DB_TABLE
-                    + " (konto_id integer primary key autoincrement, datum integer(100), betrag real(100));");
-
-            Intent intent = getIntent();
-            int day = intent.getIntExtra("day", 0);
-            Double amount = 12.3; /* zum testen: später double amount */
-             /*String category = intent.getStringExtra("name");*/
-
-            myDB.execSQL("INSERT INTO " + MY_DB_TABLE + " (datum, betrag) "
-                    + "VALUES ('" + day + "'," +
-                    "'" + amount +
-                    "');");
-            Log.v(tag, "Insert new Entry: " + day + ", " + amount);
-        } catch (Exception e) {
-            Log.v(tag, e.getMessage());
-        }
-    }
-
-    public void dropDB() {
-
-
-    }
-
-    public void getInputs() {
+    public void showOverviewByDate(){
+        KontoDAO kontoDAO = new KontoDAO(this);
+        kontoDAO.openReadable();
         Intent intent = getIntent();
-        if (intent.hasExtra("amount")) {
-            int day = intent.getIntExtra("day", 0);
-            int month = intent.getIntExtra("month", 0);
-            int year = intent.getIntExtra("year", 0);
-            String date = day + "." + month + "." + year;
+        int day = intent.getIntExtra("day", 0);
+        int month = intent.getIntExtra("month", 0);
+        int year = intent.getIntExtra("year", 0);
 
-            String category = intent.getStringExtra("name");
-
-            NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
-            String message = String.valueOf(".- am " + String.valueOf(day) + "." + String.valueOf(month) + "." + String.valueOf(year) + " in " + category + " gespeichert");
-
-            /** Dem User mitteilen, dass Eingabe gespeichert wurde */
-            Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.BOTTOM, 0, 150);
-            toast.show();
-
-            /* Daten in Liste ausgeben */
-            ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-            adapter.add("Übersicht: " + category);
-            adapter.add("Speicherdatum: " + date);
-
-            ListView list = (ListView) findViewById(R.id.listoverview);
-            list.setAdapter(adapter);
+        List<Konto> kontoByDate = kontoDAO.getKontoByDate(month, year);
+        ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
+        String strMonth;
+        switch(month){
+            case 1:
+                strMonth = "Januar";
+                break;
+            case 2:
+                strMonth = "Februar";
+                break;
+            case 3:
+                strMonth = "März";
+                break;
+            case 4:
+                strMonth = "April";
+                break;
+            case 5:
+                strMonth = "Mai";
+                break;
+            case 6:
+                strMonth = "Juni";
+                break;
+            case 7:
+                strMonth = "Juli";
+                break;
+            case 8:
+                strMonth = "August";
+                break;
+            case 9:
+                strMonth = "September";
+                break;
+            case 10:
+                strMonth = "Oktober";
+                break;
+            case 11:
+                strMonth = "November";
+                break;
+            case 12:
+                strMonth = "Dezember";
+                break;
+            default:
+                strMonth = "";
+                break;
         }
+
+        TextView title = (TextView) findViewById(R.id.overviewTitle);
+        title.setText(strMonth+" "+year+":");
+
+        for(Konto konto : kontoByDate){
+            adapter.add(konto);
+        }
+        ListView overview = (ListView) findViewById(R.id.listoverview);
+        overview.setAdapter(adapter);
+        kontoDAO.close();
     }
 
 }

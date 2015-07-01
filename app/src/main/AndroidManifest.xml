@@ -28,6 +28,10 @@
             android:name=".BaseActivity"
             android:label="@string/title_activity_base" >
         </activity>
+        <activity
+            android:name=".DatePicker"
+            android:label="@string/title_activity_date_picker" >
+        </activity>
     </application>
 
 </manifest>
