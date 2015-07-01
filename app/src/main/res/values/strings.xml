@@ -15,9 +15,9 @@
         <item>Overview by Category</item>
     </string-array>
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_drawer</item>
-        <item>@drawable/ic_drawer</item>
-        <item>@drawable/ic_drawer</item>
+        <item>@drawable/home</item>
+        <item>@drawable/calendar</item>
+        <item>@drawable/category</item>
     </array>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

@@ -133,20 +133,6 @@
         android:minWidth="100dp"
         android:tag="Income"/>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="95dp"
-                android:layout_height="wrap_content">
-
-                <Button
-                    android:layout_width="105dp"
-                    android:layout_height="wrap_content"
-                    android:text="Overview"
-                    android:textAllCaps="false"
-                    android:id="@+id/button2"
-                    android:onClick="openOverview" />
-            </LinearLayout>
-
         </GridLayout>
     </FrameLayout>
     <ListView
