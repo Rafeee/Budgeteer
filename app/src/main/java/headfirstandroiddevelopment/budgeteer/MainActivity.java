@@ -134,9 +134,5 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    public void openOverview(View v) {
-        Intent intent = new Intent(getApplicationContext(), DatePicker.class);
-        startActivity(intent);
-    }
 
 }
