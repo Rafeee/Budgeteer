@@ -56,17 +56,14 @@ public class Konto {
         this.amount = amount;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+    public void setCategory(String category) {this.category = category;}
 
     public void setDescription(String description) {this.description = description;}
-
 
 
     public String toString() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         String formamount = formatter.format(getAmount());
-        return getDay() + "." + getMonth() + "." + getYear() + ": " +formamount+ " ("+getCategory() + ")";
+        return getDay() + "." + getMonth() + "." + getYear() + ": " +formamount+ " ("+getCategory()+")" + getDescription();
     }
 }

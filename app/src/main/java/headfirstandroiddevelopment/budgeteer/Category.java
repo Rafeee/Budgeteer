@@ -90,7 +90,7 @@ public class Category extends BaseActivity {
         String amount = editAmount.getText().toString();
         DatePicker datepicker = (DatePicker) findViewById(R.id.datePicker);
         EditText editDescription = (EditText) findViewById(R.id.description);
-        String description = editDescription.toString();
+        String description = editDescription.getText().toString();
 
         if (!amount.isEmpty()) {
             TextView categoryView = (TextView) findViewById(R.id.categoryTitle);
