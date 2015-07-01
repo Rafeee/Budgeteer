@@ -88,12 +88,12 @@ public class Overview extends BaseActivity {
                 strMonth = "";
                 break;
         }
-
-        if(intent.getStringExtra("lastView").equals("date")){
+        showOverviewByDate();
+        /*if(intent.getStringExtra("lastView").equals("date")){
             showOverviewByDate();
         } else{
             showOverviewByCategory();
-        }
+        }*/
 
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
 
