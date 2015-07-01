@@ -1,6 +1,7 @@
 package headfirstandroiddevelopment.budgeteer;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,12 +9,20 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class DatePicker extends ActionBarActivity {
+public class DatePicker extends BaseActivity {
+
+    private String[] navMenuTitles;
+    private TypedArray navMenuIcons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_picker);
+
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
+
+        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
+        set(navMenuTitles, navMenuIcons);
     }
 
     @Override

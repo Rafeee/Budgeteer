@@ -153,7 +153,7 @@ public class BaseActivity extends ActionBarActivity {
                 finish();
                 break;
             case 1:
-                Intent intent1 = new Intent(this, Category.class);
+                Intent intent1 = new Intent(this, DatePicker.class);
                 startActivity(intent1);
                 finish();
                 break;
