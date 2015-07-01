@@ -158,7 +158,7 @@ public class BaseActivity extends ActionBarActivity {
                 finish();
                 break;
             case 2:
-                Intent intent2 = new Intent(this, Overview.class);
+                Intent intent2 = new Intent(this, CategoryPicker.class);
                 startActivity(intent2);
                 finish();
                 break;
