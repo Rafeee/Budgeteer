@@ -31,60 +31,22 @@ import java.util.Locale;
 
 public class Overview extends BaseActivity {
 
-    /*final static String MY_DB_NAME = "Budgeteer";
-    final static String MY_DB_TABLE = "konto";
-    final static String tag = "ensacom";
-*/
-
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
+
+    Intent intent = getIntent();
+    int day = intent.getIntExtra("day", 0);
+    int month = intent.getIntExtra("month", 0);
+    int year = intent.getIntExtra("year", 0);
+    String category = intent.getStringExtra("category");
+    String strMonth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
-        showOverviewByDate();
-        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
-
-        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
-        set(navMenuTitles, navMenuIcons);
-        
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.global, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void showOverviewByDate(){
-        KontoDAO kontoDAO = new KontoDAO(this);
-        kontoDAO.openReadable();
-        Intent intent = getIntent();
-        int day = intent.getIntExtra("day", 0);
-        int month = intent.getIntExtra("month", 0);
-        int year = intent.getIntExtra("year", 0);
-
-        List<Konto> kontoByDate = kontoDAO.getKontoByDate(month, year);
-        ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
-        String strMonth;
         switch(month){
             case 1:
                 strMonth = "Januar";
@@ -127,6 +89,46 @@ public class Overview extends BaseActivity {
                 break;
         }
 
+        if(intent.getStringExtra("lastView").equals("date")){
+            showOverviewByDate();
+        } else{
+            showOverviewByCategory();
+        }
+
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
+
+        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
+        set(navMenuTitles, navMenuIcons);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.global, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void showOverviewByDate(){
+        KontoDAO kontoDAO = new KontoDAO(this);
+        kontoDAO.openReadable();
+
+        List<Konto> kontoByDate = kontoDAO.getKontoByDate(month, year);
+        ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
+
         TextView title = (TextView) findViewById(R.id.overviewTitle);
         title.setText(strMonth+" "+year+":");
 
@@ -136,6 +138,23 @@ public class Overview extends BaseActivity {
         ListView overview = (ListView) findViewById(R.id.listoverview);
         overview.setAdapter(adapter);
         kontoDAO.close();
+    }
+
+    public void showOverviewByCategory(){
+        KontoDAO kontoDAO = new KontoDAO(this);
+        kontoDAO.openReadable();
+
+        List<Konto> kontoByCategory = kontoDAO.getKontoByCategory(category);
+        ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
+
+        TextView title = (TextView) findViewById(R.id.overviewTitle);
+        title.setText(category);
+
+        ListView overview = (ListView) findViewById(R.id.listoverview);
+        overview.setAdapter(adapter);
+        kontoDAO.close();
+
+
     }
 
 }
