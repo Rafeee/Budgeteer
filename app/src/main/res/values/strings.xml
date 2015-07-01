@@ -10,7 +10,7 @@
     <string name="menu">Menu</string>
 
     <string-array name="nav_drawer_items">
-        <item>Main</item>
+        <item>Home</item>
         <item>Overview by Date</item>
         <item>Overview by Category</item>
     </string-array>

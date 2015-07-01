@@ -89,6 +89,8 @@ public class Category extends BaseActivity {
         EditText editAmount = (EditText) findViewById(R.id.amount);
         String amount = editAmount.getText().toString();
         DatePicker datepicker = (DatePicker) findViewById(R.id.datePicker);
+        EditText editDescription = (EditText) findViewById(R.id.description);
+        String description = editDescription.toString();
 
         if (!amount.isEmpty()) {
             TextView categoryView = (TextView) findViewById(R.id.categoryTitle);
@@ -104,6 +106,7 @@ public class Category extends BaseActivity {
             konto.setYear(year);
             konto.setAmount(Double.valueOf(amount));
             konto.setCategory(category);
+            konto.setDescription(description);
 
             KontoDAO kontoDAO = new KontoDAO(this);
             kontoDAO.openWritable();

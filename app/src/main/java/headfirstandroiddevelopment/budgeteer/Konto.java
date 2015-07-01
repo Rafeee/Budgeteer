@@ -13,6 +13,7 @@ public class Konto {
     private int year;
     private Double amount;
     private String category;
+    private String description;
 
     public Konto() {
     }
@@ -37,6 +38,8 @@ public class Konto {
         return category;
     }
 
+    public String getDescription() {return description;}
+
     public void setDay(int day) {
         this.day = day;
     }
@@ -56,6 +59,8 @@ public class Konto {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    public void setDescription(String description) {this.description = description;}
 
 
 
