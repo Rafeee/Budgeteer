@@ -44,7 +44,6 @@ public class KontoDAO extends BaseDAO {
 
         List<Konto> kontoByDate = new ArrayList<>();
 
-
         while (cursor.moveToNext()){
             Konto konto = new Konto();
             konto.setDay(cursor.getInt(0));
@@ -55,6 +54,23 @@ public class KontoDAO extends BaseDAO {
             kontoByDate.add(konto);
         }
         return kontoByDate;
+    }
+
+    public List<Konto> getKontoByCategory(String category){
+        Cursor cursor = db.query("konto", new String[]{"day", "month", "year", "amount", "category"}, "category = ?", new String[]{category}, null, null, null);
+
+        List<Konto> kontoByCategory = new ArrayList<>();
+
+        while (cursor.moveToNext()){
+            Konto konto = new Konto();
+            konto.setDay(cursor.getInt(0));
+            konto.setMonth(cursor.getInt(1));
+            konto.setYear(cursor.getInt(2));
+            konto.setAmount(cursor.getDouble(3));
+            konto.setCategory(cursor.getString(4));
+            kontoByCategory.add(konto);
+        }
+        return kontoByCategory;
     }
 
 }
