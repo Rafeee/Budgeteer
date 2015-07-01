@@ -3,9 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="headfirstandroiddevelopment.budgeteer.Overview"
-    android:id="@+id/overview_activity" >
+    android:id="@+id/drawer_layout" >
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -42,10 +47,15 @@
 
     </LinearLayout>
 
-    <fragment android:id="@+id/navigation_drawer"
-        android:layout_width="@dimen/navigation_drawer_width" android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:name="headfirstandroiddevelopment.budgeteer.NavigationDrawerFragment"
-        tools:layout="@layout/fragment_navigation_drawer" />
+</FrameLayout>
 
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="260dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#1a1c25"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp" />
 </android.support.v4.widget.DrawerLayout>

@@ -25,8 +25,8 @@
             android:label="@string/title_activity_overview" >
         </activity>
         <activity
-            android:name=".ChooseDate"
-            android:label="@string/title_activity_choose_date" >
+            android:name=".BaseActivity"
+            android:label="@string/title_activity_base" >
         </activity>
         <activity
             android:name=".DatePicker"
