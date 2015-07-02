@@ -15,160 +15,176 @@
         android:layout_height="match_parent" >
 
 
-        <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:columnCount="3"
-            android:rowCount="4"
-            android:layout_gravity="center_horizontal|top">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Title"
+                android:textStyle="bold"
+                android:textSize="32dp"
+                android:text="Make a new entry"
+                android:gravity="left" />
 
-<TableRow android:gravity="center">
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon1"
-        android:onClick="openCategory"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
-        android:tag="Apartment"
-        android:cropToPadding="false"
-        android:longClickable="false"
-        android:layout_margin="5dp"
-        android:layout_gravity="top|center" />
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon2"
-        android:onClick="openCategory"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
-        android:tag="Clothes"
-        android:layout_margin="5dp"
-        android:layout_gravity="top|center" />
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:columnCount="3"
+                android:rowCount="4"
+                android:layout_gravity="center_horizontal|top">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon3"
-        android:onClick="openCategory"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
-        android:tag="Phone"
-        android:layout_margin="5dp"
-        android:layout_gravity="top|center" />
-</TableRow>
+    <TableRow android:gravity="center">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon1"
+            android:onClick="openCategory"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:tag="Apartment"
+            android:cropToPadding="false"
+            android:longClickable="false"
+            android:layout_margin="5dp"
+            android:layout_gravity="top|center" />
 
-            <TableRow android:gravity="center">
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon4"
-        android:onClick="openCategory"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
-        android:tag="Car"
-        android:layout_margin="5dp"
-        android:layout_gravity="top|center" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon2"
+            android:onClick="openCategory"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:tag="Clothes"
+            android:layout_margin="5dp"
+            android:layout_gravity="top|center" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon5"
-        android:onClick="openCategory"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
-        android:tag="Transport"
-        android:layout_margin="5dp"
-        android:layout_gravity="top|center" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon3"
+            android:onClick="openCategory"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:tag="Phone"
+            android:layout_margin="5dp"
+            android:layout_gravity="top|center" />
+    </TableRow>
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon6"
-        android:onClick="openCategory"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
-    android:tag="Food"
-        android:layout_margin="5dp"
-        android:layout_gravity="top|center" />
-            </TableRow>
-            <TableRow android:gravity="center">
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon7"
-        android:onClick="openCategory"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
-        android:tag="Sports"
-        android:layout_margin="5dp"
-        android:layout_gravity="top|center" />
+                <TableRow android:gravity="center">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon4"
+            android:onClick="openCategory"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:tag="Car"
+            android:layout_margin="5dp"
+            android:layout_gravity="top|center" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon8"
-        android:onClick="openCategory"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
-        android:tag="Health"
-        android:layout_margin="5dp"
-        android:layout_gravity="top|center" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon5"
+            android:onClick="openCategory"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:tag="Transport"
+            android:layout_margin="5dp"
+            android:layout_gravity="top|center" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon9"
-        android:onClick="openCategory"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
-        android:tag="Entertainment"
-        android:layout_margin="5dp"
-        android:layout_gravity="top|center" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon6"
+            android:onClick="openCategory"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+        android:tag="Food"
+            android:layout_margin="5dp"
+            android:layout_gravity="top|center" />
+                </TableRow>
+                <TableRow android:gravity="center">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon7"
+            android:onClick="openCategory"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:tag="Sports"
+            android:layout_margin="5dp"
+            android:layout_gravity="top|center" />
 
-            </TableRow>
-            <TableRow android:gravity="center">
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon10"
-        android:onClick="openCategory"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
-        android:tag="Pets"
-        android:layout_margin="5dp"
-        android:layout_gravity="top|center" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon8"
+            android:onClick="openCategory"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:tag="Health"
+            android:layout_margin="5dp"
+            android:layout_gravity="top|center" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon11"
-        android:onClick="openCategory"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
-        android:tag="Apartment"
-        android:layout_margin="5dp"
-        android:layout_gravity="top|center" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon9"
+            android:onClick="openCategory"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:tag="Entertainment"
+            android:layout_margin="5dp"
+            android:layout_gravity="top|center" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/icon12"
-        android:onClick="openCategory"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
-        android:tag="Income"
-        android:layout_margin="5dp"
-        android:layout_gravity="top|center" />
+                </TableRow>
+                <TableRow android:gravity="center">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon10"
+            android:onClick="openCategory"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:tag="Pets"
+            android:layout_margin="5dp"
+            android:layout_gravity="top|center" />
 
-            </TableRow>
-        </TableLayout>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon11"
+            android:onClick="openCategory"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:tag="Apartment"
+            android:layout_margin="5dp"
+            android:layout_gravity="top|center" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon12"
+            android:onClick="openCategory"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:tag="Income"
+            android:layout_margin="5dp"
+            android:layout_gravity="top|center" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </RelativeLayout>
 
     </FrameLayout>
     <ListView
