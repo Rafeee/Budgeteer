@@ -151,14 +151,14 @@ public class Overview extends BaseActivity {
         Intent intent = getIntent();
         category = intent.getStringExtra("category");
 
+        TextView title = (TextView) findViewById(R.id.categoryTitle);
+        title.setText(category);
+
         KontoDAO kontoDAO = new KontoDAO(this);
         kontoDAO.openReadable();
 
         List<Konto> kontoByCategory = kontoDAO.getKontoByCategory(category);
         ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
-
-        TextView title = (TextView) findViewById(R.id.overviewTitle);
-        title.setText(category);
 
         ListView overview = (ListView) findViewById(R.id.listoverview);
         overview.setAdapter(adapter);

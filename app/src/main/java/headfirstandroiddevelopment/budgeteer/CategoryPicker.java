@@ -73,7 +73,7 @@ public class CategoryPicker extends ActionBarActivity {
         /*String nameLowercase = category.toLowerCase();
 
         intent.putExtra("category", nameLowercase);*/
-        intent.putExtra("lastView", "date");
+        intent.putExtra("lastView", "category");
         startActivity(intent);
         }
 

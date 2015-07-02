@@ -64,6 +64,6 @@ public class Konto {
     public String toString() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         String formamount = formatter.format(getAmount());
-        return getDay() + "." + getMonth() + "." + getYear() + ": " +formamount+ " ("+getCategory()+")" + getDescription();
+        return getDay() + "." + getMonth() + "." + getYear() + ": " +formamount+ " ("+getCategory()+") " + getDescription();
     }
 }
