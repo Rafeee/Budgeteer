@@ -31,7 +31,7 @@ public class CategoryPicker extends BaseActivity {
         ImageButton icon3 = (ImageButton) findViewById(R.id.icon3);
         icon3.setImageResource(R.drawable.phone);
         ImageButton icon4 = (ImageButton) findViewById(R.id.icon4);
-        icon4.setImageResource(R.drawable.car);
+        icon4.setImageResource(R.drawable.bill);
         ImageButton icon5 = (ImageButton) findViewById(R.id.icon5);
         icon5.setImageResource(R.drawable.transport);
         ImageButton icon6 = (ImageButton) findViewById(R.id.icon6);
@@ -43,9 +43,9 @@ public class CategoryPicker extends BaseActivity {
         ImageButton icon9 = (ImageButton) findViewById(R.id.icon9);
         icon9.setImageResource(R.drawable.entertainment);
         ImageButton icon10 = (ImageButton) findViewById(R.id.icon10);
-        icon10.setImageResource(R.drawable.pets);
+        icon10.setImageResource(R.drawable.pet);
         ImageButton icon11 = (ImageButton) findViewById(R.id.icon11);
-        icon11.setImageResource(R.drawable.apartment);
+        icon11.setImageResource(R.drawable.car);
         ImageButton icon12 = (ImageButton) findViewById(R.id.icon12);
         icon12.setImageResource(R.drawable.income);
     }
