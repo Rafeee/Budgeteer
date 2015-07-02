@@ -1,5 +1,6 @@
 package headfirstandroiddevelopment.budgeteer;
 
+import android.content.res.TypedArray;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,12 +8,20 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 
 
-public class CategoryPicker extends ActionBarActivity {
+public class CategoryPicker extends BaseActivity {
+
+    private String[] navMenuTitles;
+    private TypedArray navMenuIcons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_picker);
+
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
+
+        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
+        set(navMenuTitles, navMenuIcons);
 
         /*show icons*/
         ImageButton icon1 = (ImageButton) findViewById(R.id.icon1);

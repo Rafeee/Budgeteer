@@ -14,9 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
 
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
@@ -26,6 +27,7 @@
             android:rowCount="4"
             android:layout_gravity="center_horizontal|top">
 
+<TableRow android:gravity="center">
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +62,9 @@
         android:tag="Phone"
         android:layout_margin="5dp"
         android:layout_gravity="top|center" />
+</TableRow>
 
+            <TableRow android:gravity="center">
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,7 +97,8 @@
     android:tag="Food"
         android:layout_margin="5dp"
         android:layout_gravity="top|center" />
-
+            </TableRow>
+            <TableRow android:gravity="center">
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -123,10 +128,12 @@
         android:onClick="openCategory"
         android:minHeight="100dp"
         android:minWidth="100dp"
-    android:tag="Entertainment"
+        android:tag="Entertainment"
         android:layout_margin="5dp"
         android:layout_gravity="top|center" />
 
+            </TableRow>
+            <TableRow android:gravity="center">
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -160,7 +167,9 @@
         android:layout_margin="5dp"
         android:layout_gravity="top|center" />
 
-        </GridLayout>
+            </TableRow>
+        </TableLayout>
+
     </FrameLayout>
     <ListView
         android:id="@+id/left_drawer"
