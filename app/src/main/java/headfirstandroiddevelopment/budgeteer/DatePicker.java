@@ -20,7 +20,6 @@ public class DatePicker extends BaseActivity {
         setContentView(R.layout.activity_date_picker);
 
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
-
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
         set(navMenuTitles, navMenuIcons);
     }
@@ -43,9 +42,9 @@ public class DatePicker extends BaseActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
+
     public void showOverviewByDate(View v){
         Intent intent = new Intent(getApplicationContext(), Overview.class);
 
@@ -53,11 +52,11 @@ public class DatePicker extends BaseActivity {
         int day = datepicker.getDayOfMonth();
         int month = datepicker.getMonth()+1;
         int year = datepicker.getYear();
+
         intent.putExtra("day", day);
         intent.putExtra("month", month);
         intent.putExtra("year", year);
         intent.putExtra("lastView", "date");
-
         startActivity(intent);
     }
 }

@@ -69,10 +69,11 @@ public class CategoryPicker extends ActionBarActivity {
         Intent intent = new Intent(getApplicationContext(), Overview.class);
         String category = v.getTag().toString();
 
-        intent.putExtra("name", category);
-        String nameLowercase = category.toLowerCase();
+        intent.putExtra("category", category);
+        /*String nameLowercase = category.toLowerCase();
 
-        intent.putExtra("iconName", nameLowercase);
+        intent.putExtra("category", nameLowercase);*/
+        intent.putExtra("lastView", "date");
         startActivity(intent);
         }
 

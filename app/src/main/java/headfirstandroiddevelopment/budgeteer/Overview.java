@@ -34,18 +34,25 @@ public class Overview extends BaseActivity {
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
 
-    Intent intent = getIntent();
-    int day = intent.getIntExtra("day", 0);
-    int month = intent.getIntExtra("month", 0);
-    int year = intent.getIntExtra("year", 0);
-    String category = intent.getStringExtra("category");
-    String strMonth;
+    private int day;
+    private int month;
+    private int year;
+    private String category;
+    private String strMonth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
+
+        Intent intent = getIntent();
+
+        if (intent.hasExtra("day")){
+        day = intent.getIntExtra("day", 0);
+        month = intent.getIntExtra("month", 0);
+        year = intent.getIntExtra("year", 0);
+        }
 
         switch(month){
             case 1:
@@ -88,12 +95,11 @@ public class Overview extends BaseActivity {
                 strMonth = "";
                 break;
         }
-        showOverviewByDate();
-        /*if(intent.getStringExtra("lastView").equals("date")){
+        if(intent.getStringExtra("lastView").equals("date")){
             showOverviewByDate();
         } else{
             showOverviewByCategory();
-        }*/
+        }
 
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
 
@@ -123,6 +129,7 @@ public class Overview extends BaseActivity {
     }
 
     public void showOverviewByDate(){
+
         KontoDAO kontoDAO = new KontoDAO(this);
         kontoDAO.openReadable();
 
@@ -141,6 +148,9 @@ public class Overview extends BaseActivity {
     }
 
     public void showOverviewByCategory(){
+        Intent intent = getIntent();
+        category = intent.getStringExtra("category");
+
         KontoDAO kontoDAO = new KontoDAO(this);
         kontoDAO.openReadable();
 
