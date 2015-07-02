@@ -29,6 +29,8 @@ import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class Category extends BaseActivity {
@@ -116,6 +118,7 @@ public class Category extends BaseActivity {
             intent.putExtra("amount", konto.getAmount());
             intent.putExtra("date", date);
             intent.putExtra("name", konto.getCategory());
+            intent.putExtra("time", getCurrentMonth());
             startActivity(intent);
 
         }
@@ -125,5 +128,43 @@ public class Category extends BaseActivity {
         else
            Toast.makeText(getApplicationContext(), "Please Enter Amount", Toast.LENGTH_LONG).show();
     }
+    public static String getCurrentDay(){
+        try {
 
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd");
+            String currentTimeStamp = dateFormat.format(new Date());  // Find todays date
+
+            return currentTimeStamp;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return null;
+        }
+    }
+    public static String getCurrentMonth(){
+        try {
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM");
+            String currentTimeStamp = dateFormat.format(new Date());  // Find todays date
+
+            return currentTimeStamp;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return null;
+        }
+    }
+    public static String getCurrentYear(){
+        try {
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
+            String currentTimeStamp = dateFormat.format(new Date());  // Find todays date
+
+            return currentTimeStamp;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return null;
+        }
+    }
 }

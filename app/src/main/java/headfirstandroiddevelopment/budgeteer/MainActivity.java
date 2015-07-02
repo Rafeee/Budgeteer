@@ -102,6 +102,7 @@ public class MainActivity extends BaseActivity {
             String date = intent.getStringExtra("date");
             Double amount = intent.getDoubleExtra("amount", 1.0);
             String category = intent.getStringExtra("name");
+            String time = intent.getStringExtra("time");
 
             // Betrag als Euro formatieren
             // TODO: Verschiedene Währungen unterscheiden
@@ -109,7 +110,7 @@ public class MainActivity extends BaseActivity {
             String formamount = formatter.format(amount);
 
             // Dem User mitteilen, was gespeichert wurde
-            String message = String.valueOf(formamount + " saved in '" + category + "' \n on " + String.valueOf(date));
+            String message = String.valueOf(formamount + " saved in '" + category + "' \n on " + String.valueOf(date)+" heute: "+time);
             // Mit for Schleife die Dauer des Toasts verdoppeln
             /*for (int i = 0; i < 2; i++) {*/
             final Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
@@ -119,7 +120,6 @@ public class MainActivity extends BaseActivity {
                 tv.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
                 toast.show();
             }
-
         }
     }
     public void openCategory(View v) {
