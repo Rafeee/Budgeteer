@@ -59,7 +59,7 @@ public class KontoDAO extends BaseDAO {
     }
 
     public List<Konto> getKontoByCategory(String category){
-        Cursor cursor = db.query("konto", new String[]{"day", "month", "year", "amount", "category", "description"}, "category = ?", new String[]{category}, null, null, null);
+        Cursor cursor = db.query("konto", new String[]{"day", "month", "year", "amount", "category"}, "category = ?", new String[]{category}, null, null, null);
 
         List<Konto> kontoByCategory = new ArrayList<>();
 
