@@ -45,18 +45,17 @@
         android:layout_height="2dp"
         android:background="#c0c0c0" />
 
-    <DatePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/datePicker"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_alignWithParentIfMissing="false"
-        android:layout_gravity="center"
-        android:layout_marginTop="4dp"
-        android:calendarViewShown="true" />
+        <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:id="@+id/datePicker"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_alignWithParentIfMissing="false"
+            android:layout_marginTop="4dp"
+            android:calendarViewShown="true" />
 
-    <View
+        <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:background="#c0c0c0"/>
@@ -67,13 +66,30 @@
         android:text="Repeat every month"
         android:id="@+id/repeatMonth" />
 
-    <LinearLayout
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="bottom">
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/description"
+            android:layout_weight="1"
+            android:hint="Description" />
+
+            </LinearLayout>
+
+        <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="80dp"
         android:gravity="bottom">
 
-        <EditText
+
+            <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -82,7 +98,8 @@
             android:layout_alignParentStart="true"
             android:gravity="bottom"
             android:autoText="false"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:hint="Amount" />
 
         <Button
             android:layout_width="match_parent"

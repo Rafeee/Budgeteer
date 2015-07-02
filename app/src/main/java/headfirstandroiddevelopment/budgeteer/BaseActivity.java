@@ -80,7 +80,7 @@ public class BaseActivity extends ActionBarActivity {
         // getSupportActionBar().setIcon(R.drawable.ic_drawer);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_drawer, // nav menu toggle icon
+                R.drawable.ic_menu_black_24dp, // nav menu toggle icon
                 R.string.app_name, // nav drawer open - description for
                 // accessibility
                 R.string.app_name // nav drawer close - description for
@@ -158,7 +158,7 @@ public class BaseActivity extends ActionBarActivity {
                 finish();
                 break;
             case 2:
-                Intent intent2 = new Intent(this, Overview.class);
+                Intent intent2 = new Intent(this, CategoryPicker.class);
                 startActivity(intent2);
                 finish();
                 break;

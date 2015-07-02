@@ -65,7 +65,7 @@ public class Category extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
 
-            getMenuInflater().inflate(R.menu.menu_category, menu);
+            getMenuInflater().inflate(R.menu.global, menu);
 
             return true;
         }
@@ -89,6 +89,8 @@ public class Category extends BaseActivity {
         EditText editAmount = (EditText) findViewById(R.id.amount);
         String amount = editAmount.getText().toString();
         DatePicker datepicker = (DatePicker) findViewById(R.id.datePicker);
+        EditText editDescription = (EditText) findViewById(R.id.description);
+        String description = editDescription.getText().toString();
 
         if (!amount.isEmpty()) {
             TextView categoryView = (TextView) findViewById(R.id.categoryTitle);
@@ -104,6 +106,7 @@ public class Category extends BaseActivity {
             konto.setYear(year);
             konto.setAmount(Double.valueOf(amount));
             konto.setCategory(category);
+            konto.setDescription(description);
 
             KontoDAO kontoDAO = new KontoDAO(this);
             kontoDAO.openWritable();

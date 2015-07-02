@@ -13,6 +13,7 @@ public class Konto {
     private int year;
     private Double amount;
     private String category;
+    private String description;
 
     public Konto() {
     }
@@ -37,6 +38,8 @@ public class Konto {
         return category;
     }
 
+    public String getDescription() {return description;}
+
     public void setDay(int day) {
         this.day = day;
     }
@@ -53,15 +56,14 @@ public class Konto {
         this.amount = amount;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+    public void setCategory(String category) {this.category = category;}
 
+    public void setDescription(String description) {this.description = description;}
 
 
     public String toString() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         String formamount = formatter.format(getAmount());
-        return getDay() + "." + getMonth() + "." + getYear() + ": " +formamount+ " ("+getCategory() + ")";
+        return getDay() + "." + getMonth() + "." + getYear() + ": " +formamount+ " ("+getCategory()+")" +getDescription();
     }
 }
