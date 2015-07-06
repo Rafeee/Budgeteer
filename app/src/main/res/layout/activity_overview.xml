@@ -31,7 +31,9 @@
                 android:text=""
                 android:textStyle="bold"
                 android:textSize="32dp"
-                android:id="@+id/overviewTitle" />
+                android:id="@+id/overviewTitle"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
 
             <View
                 android:layout_width="fill_parent"
