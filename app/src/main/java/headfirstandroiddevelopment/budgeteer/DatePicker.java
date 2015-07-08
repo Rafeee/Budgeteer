@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 
 public class DatePicker extends BaseActivity {
@@ -22,6 +24,16 @@ public class DatePicker extends BaseActivity {
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
         set(navMenuTitles, navMenuIcons);
+
+        //TODO Spinner hat noch keine Funktion
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.spinner, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
     }
 
     @Override
@@ -44,7 +56,7 @@ public class DatePicker extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    // click button 'Show Overview'
     public void showOverviewByDate(View v){
         Intent intent = new Intent(getApplicationContext(), Overview.class);
 

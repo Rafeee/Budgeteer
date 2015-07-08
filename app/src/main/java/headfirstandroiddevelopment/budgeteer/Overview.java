@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -39,6 +40,7 @@ public class Overview extends BaseActivity {
     private int year;
     private String category;
     private String strMonth;
+    private Boolean repeat;
 
 
     @Override
@@ -53,7 +55,6 @@ public class Overview extends BaseActivity {
         month = intent.getIntExtra("month", 0);
         year = intent.getIntExtra("year", 0);
         }
-
         switch(month){
             case 1:
                 strMonth = "Januar";
@@ -100,9 +101,7 @@ public class Overview extends BaseActivity {
         } else{
             showOverviewByCategory();
         }
-
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
-
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
         set(navMenuTitles, navMenuIcons);
     }
@@ -129,43 +128,56 @@ public class Overview extends BaseActivity {
     }
 
     public void showOverviewByDate(){
-
         KontoDAO kontoDAO = new KontoDAO(this);
         kontoDAO.openReadable();
 
-        List<Konto> kontoByDate = kontoDAO.getKontoByDate(month, year);
-        ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
+        List<Konto> kontoData = kontoDAO.getKontoByDate(month, year);
 
         TextView title = (TextView) findViewById(R.id.overviewTitle);
         title.setText(strMonth+" "+year+":");
 
-        for(Konto konto : kontoByDate){
-            adapter.add(konto);
-        }
-        ListView overview = (ListView) findViewById(R.id.listoverview);
-        overview.setAdapter(adapter);
+        generateResult(kontoData);
+
         kontoDAO.close();
     }
 
     public void showOverviewByCategory(){
-        Intent intent = getIntent();
-        category = intent.getStringExtra("category");
-
         KontoDAO kontoDAO = new KontoDAO(this);
         kontoDAO.openReadable();
 
-        List<Konto> kontoByCategory = kontoDAO.getKontoByCategory(category);
-        ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
+        Intent intent = getIntent();
+        category = intent.getStringExtra("category");
+
+        List<Konto> kontoData = kontoDAO.getKontoByCategory(category);
 
         TextView title = (TextView) findViewById(R.id.overviewTitle);
         title.setText(category);
 
-        for(Konto konto : kontoByCategory){
-            adapter.add(konto);
-        }
-        ListView overview = (ListView) findViewById(R.id.listoverview);
-        overview.setAdapter(adapter);
+        generateResult(kontoData);
+
         kontoDAO.close();
     }
 
+    public void generateResult(List<Konto> kontoData){
+        Double result = 0.;
+        ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
+        for(Konto konto : kontoData){
+            adapter.add(konto);
+            if (konto.getCategory().equals("Income")){
+                result += konto.getAmount();
+            }else {
+                result -= konto.getAmount();
+            }        }
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+        String formatResult = formatter.format(result);
+        TextView tvResult = (TextView) findViewById(R.id.result);
+        if (result < 0.0) {
+            tvResult.setTextColor(Color.RED);
+        }else{
+            tvResult.setTextColor(Color.GREEN);
+        }
+        tvResult.setText("Total: " + formatResult);
+        ListView overview = (ListView) findViewById(R.id.listoverview);
+        overview.setAdapter(adapter);
+    }
 }

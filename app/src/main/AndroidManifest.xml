@@ -36,6 +36,10 @@
             android:name=".CategoryPicker"
             android:label="@string/title_activity_category_picker" >
         </activity>
+        <activity
+            android:name=".DeleteEntries"
+            android:label="@string/title_activity_delete_entries" >
+        </activity>
     </application>
 
 </manifest>

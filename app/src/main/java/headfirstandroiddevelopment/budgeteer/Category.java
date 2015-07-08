@@ -43,7 +43,6 @@ public class Category extends BaseActivity {
         setContentView(R.layout.activity_category);
 
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
-
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
         set(navMenuTitles, navMenuIcons);
 
@@ -57,8 +56,7 @@ public class Category extends BaseActivity {
         ivIcon.setImageResource(getResources().getIdentifier(iconName, "drawable", getPackageName()));
 
         CheckBox repeatMonth = (CheckBox) findViewById(R.id.repeatMonth);
-        if (title.getText().toString() == "Income"){
-            //TODO String vergleichen mit .equals()
+        if (title.getText().toString().equals("Income")){
             repeatMonth.setChecked(true);
         }
     }
@@ -66,13 +64,9 @@ public class Category extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-
             getMenuInflater().inflate(R.menu.global, menu);
-
             return true;
         }
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -86,13 +80,21 @@ public class Category extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     public void save(View v){
-        /* Eingabe Betrag und Datum in variablen speichern */
+        /* Aus Eingabefeldern Betrag und Datum mit Variablen referenzieren */
         EditText editAmount = (EditText) findViewById(R.id.amount);
         String amount = editAmount.getText().toString();
         DatePicker datepicker = (DatePicker) findViewById(R.id.datePicker);
         EditText editDescription = (EditText) findViewById(R.id.description);
         String description = editDescription.getText().toString();
+        CheckBox repeatMonth = (CheckBox) findViewById(R.id.repeatMonth);
+        Integer repeat;
+        if(repeatMonth.isChecked()){
+            repeat = 1;
+        }else{
+            repeat = 0;
+        }
 
         if (!amount.isEmpty()) {
             TextView categoryView = (TextView) findViewById(R.id.categoryTitle);
@@ -109,6 +111,7 @@ public class Category extends BaseActivity {
             konto.setAmount(Double.valueOf(amount));
             konto.setCategory(category);
             konto.setDescription(description);
+            konto.setRepeatMonth(repeat);
 
             KontoDAO kontoDAO = new KontoDAO(this);
             kontoDAO.openWritable();
@@ -118,53 +121,10 @@ public class Category extends BaseActivity {
             intent.putExtra("amount", konto.getAmount());
             intent.putExtra("date", date);
             intent.putExtra("name", konto.getCategory());
-            intent.putExtra("time", getCurrentMonth());
             startActivity(intent);
-
         }
-        /** Dem Benutzer mitteilen, dass keine Eingabe gemacht wurde
-         *
-         */
+        // Dem Benutzer mitteilen, dass keine Eingabe gemacht wurde
         else
            Toast.makeText(getApplicationContext(), "Please Enter Amount", Toast.LENGTH_LONG).show();
-    }
-    public static String getCurrentDay(){
-        try {
-
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd");
-            String currentTimeStamp = dateFormat.format(new Date());  // Find todays date
-
-            return currentTimeStamp;
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            return null;
-        }
-    }
-    public static String getCurrentMonth(){
-        try {
-
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM");
-            String currentTimeStamp = dateFormat.format(new Date());  // Find todays date
-
-            return currentTimeStamp;
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            return null;
-        }
-    }
-    public static String getCurrentYear(){
-        try {
-
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
-            String currentTimeStamp = dateFormat.format(new Date());  // Find todays date
-
-            return currentTimeStamp;
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            return null;
-        }
     }
 }

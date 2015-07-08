@@ -7,15 +7,20 @@ import java.util.Locale;
  * Created by bklemr on 26.06.2015.
  */
 public class Konto {
-
+    private int id;
     private int day;
     private int month;
     private int year;
     private Double amount;
     private String category;
     private String description;
+    private Integer repeatMonth;
 
     public Konto() {
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getDay() {
@@ -44,6 +49,10 @@ public class Konto {
         this.day = day;
     }
 
+    public Integer getRepeatMonth() {
+        return repeatMonth;
+    }
+
     public void setMonth(int month) {
         this.month = month;
     }
@@ -60,14 +69,21 @@ public class Konto {
 
     public void setDescription(String description) {this.description = description;}
 
+    public void setRepeatMonth(Integer repeatMonth) {
+        this.repeatMonth = repeatMonth;
+    }
 
     public String toString() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         String formamount = formatter.format(getAmount());
-        String strOutput = getDay() + "." + getMonth() + "." + getYear() + ": " +formamount+ " ("+getCategory()+") " + getDescription();
+        String strOutput = getDay() + "." + getMonth() + "." + getYear() + ": " +formamount+ " ("+getCategory()+") " + getDescription()+" "+getRepeatMonth();
         /*if(getDescription()==""){
             strOutput+=getDescription();
         }*/
         return strOutput;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
