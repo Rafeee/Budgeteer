@@ -162,8 +162,13 @@ public class BaseActivity extends ActionBarActivity {
                 startActivity(intent2);
                 break;
             case 3:
-                Intent intent3 = new Intent(this, SettingsActivity.class);
+                Intent intent3 = new Intent(this, DeleteEntries.class);
                 startActivity(intent3);
+                break;
+            case 4:
+                Intent intent4 = new Intent(this, SettingsActivity.class);
+                startActivity(intent4);
+                break;
             default:
                 break;
         }

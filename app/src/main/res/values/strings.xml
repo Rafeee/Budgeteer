@@ -12,13 +12,16 @@
         <item>Home</item>
         <item>Overview by Date</item>
         <item>Overview by Category</item>
+        <item>Edit</item>
         <item>Settings</item>
     </string-array>
     <array name="nav_drawer_icons">
         <item>@drawable/home</item>
         <item>@drawable/calendar</item>
         <item>@drawable/category</item>
+        <item>@drawable/category</item>
         <item>@drawable/settings</item>
+
     </array>
     <string-array name="spinner">
         <item>-</item>
