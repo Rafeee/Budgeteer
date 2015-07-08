@@ -53,7 +53,7 @@ public class CategoryPicker extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_category_picker, menu);
+        getMenuInflater().inflate(R.menu.global, menu);
         return true;
     }
 

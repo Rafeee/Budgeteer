@@ -1,5 +1,8 @@
 package headfirstandroiddevelopment.budgeteer;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -72,6 +75,7 @@ public class Konto {
     public void setRepeatMonth(Integer repeatMonth) {
         this.repeatMonth = repeatMonth;
     }
+
 
     public String toString() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
