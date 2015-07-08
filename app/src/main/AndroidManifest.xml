@@ -41,6 +41,11 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        <activity
+            android:name=".DeleteEntries"
+            android:label="@string/title_activity_delete_entries" >
+
+        </activity>
     </application>
 
 </manifest>

@@ -273,7 +273,6 @@
 
         </RelativeLayout>
 
-
     </FrameLayout>
     <ListView
         android:id="@+id/left_drawer"

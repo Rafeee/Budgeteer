@@ -16,7 +16,7 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE konto (idkonto INTEGER PRIMARY KEY, day INTEGER, month INTEGER, year INTEGER, amount REAL, category TEXT, description TEXT)");
+        db.execSQL("CREATE TABLE konto (idkonto INTEGER PRIMARY KEY, day INTEGER, month INTEGER, year INTEGER, amount REAL, category TEXT, description TEXT, repeat INTEGER)");
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
