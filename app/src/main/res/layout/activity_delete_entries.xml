@@ -49,7 +49,9 @@
                     android:listSelector="@android:color/holo_blue_light"
                     android:state_selected="true"
                     android:choiceMode="singleChoice"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:focusable="false" />
 
                 <Button
                     android:layout_width="match_parent"

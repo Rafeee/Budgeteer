@@ -30,7 +30,6 @@ public class DeleteEntries extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         getAllEntries();
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,12 +69,12 @@ public class DeleteEntries extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = ((TextView)view).getText().toString();
+/*
                 Toast.makeText(getBaseContext(), ""+item, Toast.LENGTH_LONG).show();
+*/
             }
         });
         this.position = overview.getSelectedItemPosition();
-
-
         kontoDAO.close();
     }
     public void showPosition(View v){

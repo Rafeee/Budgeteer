@@ -21,12 +21,6 @@ public class Konto {
     private String description;
     private Integer repeatMonth;
 
-    private void LoadPreferences() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String data = sharedPreferences.getString("name", "08:00");
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApllicationContext());
-
-    }
     public Konto() {
     }
 
@@ -83,7 +77,6 @@ public class Konto {
     public void setRepeatMonth(Integer repeatMonth) {
         this.repeatMonth = repeatMonth;
     }
-
 
     public String toString() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
