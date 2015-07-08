@@ -20,9 +20,8 @@
         android:id="@+id/category_container" >
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,30 +29,53 @@
             android:id="@+id/categoryTitle"
             android:textStyle="bold"
             android:textSize="32dp"
-            android:gravity="left" />
+            android:gravity="left"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/iconCategory"
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/iconCategory"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:cropToPadding="false"
+                android:scaleType="centerInside" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0"
+            android:layout_below="@+id/categoryTitle"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-        <DatePicker
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:id="@+id/datePicker"
-            android:layout_below="@+id/textView"
-            android:layout_alignParentStart="true"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_marginTop="4dp"
-            android:calendarViewShown="true" />
+            <DatePicker
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/datePicker"
+                android:layout_below="@+id/textView"
+                android:layout_alignParentStart="true"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_marginTop="4dp"
+                android:calendarViewShown="false" />
+
+
+        </LinearLayout>
+
 
         <View
         android:layout_width="fill_parent"
@@ -86,7 +108,8 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:gravity="bottom">
+        android:gravity="bottom"
+            android:weightSum="1">
 
 
             <EditText
@@ -99,15 +122,17 @@
             android:gravity="bottom"
             android:autoText="false"
             android:inputType="numberDecimal"
-            android:hint="Amount" />
+            android:hint="Amount"
+                android:layout_weight="0.80" />
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save"
             android:textAllCaps="false"
             android:id="@+id/button"
-            android:onClick="save" />
+            android:onClick="save"
+            android:layout_weight="0.20" />
 
     </LinearLayout>
 

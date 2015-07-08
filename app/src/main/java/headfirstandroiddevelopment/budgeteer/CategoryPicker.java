@@ -1,20 +1,27 @@
 package headfirstandroiddevelopment.budgeteer;
 
-import android.content.Intent;
+import android.content.res.TypedArray;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageButton;
 
 
-public class CategoryPicker extends ActionBarActivity {
+public class CategoryPicker extends BaseActivity {
+
+    private String[] navMenuTitles;
+    private TypedArray navMenuIcons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_picker);
+
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
+
+        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
+        set(navMenuTitles, navMenuIcons);
 
         /*show icons*/
         ImageButton icon1 = (ImageButton) findViewById(R.id.icon1);
@@ -24,7 +31,7 @@ public class CategoryPicker extends ActionBarActivity {
         ImageButton icon3 = (ImageButton) findViewById(R.id.icon3);
         icon3.setImageResource(R.drawable.phone);
         ImageButton icon4 = (ImageButton) findViewById(R.id.icon4);
-        icon4.setImageResource(R.drawable.car);
+        icon4.setImageResource(R.drawable.bill);
         ImageButton icon5 = (ImageButton) findViewById(R.id.icon5);
         icon5.setImageResource(R.drawable.transport);
         ImageButton icon6 = (ImageButton) findViewById(R.id.icon6);
@@ -36,9 +43,9 @@ public class CategoryPicker extends ActionBarActivity {
         ImageButton icon9 = (ImageButton) findViewById(R.id.icon9);
         icon9.setImageResource(R.drawable.entertainment);
         ImageButton icon10 = (ImageButton) findViewById(R.id.icon10);
-        icon10.setImageResource(R.drawable.pets);
+        icon10.setImageResource(R.drawable.pet);
         ImageButton icon11 = (ImageButton) findViewById(R.id.icon11);
-        icon11.setImageResource(R.drawable.apartment);
+        icon11.setImageResource(R.drawable.car);
         ImageButton icon12 = (ImageButton) findViewById(R.id.icon12);
         icon12.setImageResource(R.drawable.income);
     }
@@ -64,18 +71,4 @@ public class CategoryPicker extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void showCategoryOverview (View v){
-
-        Intent intent = new Intent(getApplicationContext(), Overview.class);
-        String category = v.getTag().toString();
-
-        intent.putExtra("category", category);
-        /*String nameLowercase = category.toLowerCase();
-
-        intent.putExtra("category", nameLowercase);*/
-        intent.putExtra("lastView", "category");
-        startActivity(intent);
-        }
-
-    }
-
+}
