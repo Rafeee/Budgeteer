@@ -31,15 +31,15 @@ public class SettingsActivity extends BaseActivity  {
                 .commit();
 
 
-        SharedPreferences sharedPref = getSharedPreferences( , Context.MODE_WORLD_WRITEABLE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        String currency = sharedPref.getString("Currency","default value");
+//        SharedPreferences sharedPref = getSharedPreferences( , Context.MODE_WORLD_WRITEABLE);
+//        SharedPreferences.Editor editor = sharedPref.edit();
+//        String currency = sharedPref.getString("Currency","default value");
 
 
 
     }
 
-    public static class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+    public static class SettingsFragment extends PreferenceFragment /*implements SharedPreferences.OnSharedPreferenceChangeListener*/ {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
