@@ -51,9 +51,9 @@ public class Overview extends BaseActivity {
         Intent intent = getIntent();
 
         if (intent.hasExtra("day")){
-        day = intent.getIntExtra("day", 0);
-        month = intent.getIntExtra("month", 0);
-        year = intent.getIntExtra("year", 0);
+            day = intent.getIntExtra("day", 0);
+            month = intent.getIntExtra("month", 0);
+            year = intent.getIntExtra("year", 0);
         }
         switch(month){
             case 1:
@@ -130,12 +130,17 @@ public class Overview extends BaseActivity {
     public void showOverviewByDate(){
         KontoDAO kontoDAO = new KontoDAO(this);
         kontoDAO.openReadable();
-
-        List<Konto> kontoData = kontoDAO.getKontoByDate(month, year);
-
+        Intent intent = getIntent();
+        String spinner = intent.getStringExtra("spinner");
+        List<Konto> kontoData;
         TextView title = (TextView) findViewById(R.id.overviewTitle);
-        title.setText(strMonth+" "+year+":");
-
+        if (spinner.equals("-")) {
+            title.setText(strMonth + " " + year);
+            kontoData = kontoDAO.getKontoByDate(month, year);
+        }else{
+            title.setText(spinner+"\n"+strMonth + " " + year);
+            kontoData = kontoDAO.getKontoByDateAndCategory(month, year, spinner);
+        }
         generateResult(kontoData);
 
         kontoDAO.close();

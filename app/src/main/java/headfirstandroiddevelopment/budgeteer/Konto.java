@@ -88,10 +88,7 @@ public class Konto {
     public String toString() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         String formamount = formatter.format(getAmount());
-        String strOutput = getDay() + "." + getMonth() + "." + getYear() + ": " +formamount+ " ("+getCategory()+") " + getDescription()+" "+getRepeatMonth();
-        /*if(getDescription()==""){
-            strOutput+=getDescription();
-        }*/
+        String strOutput = getDay() + "." + getMonth() + "." + getYear() + ": " +formamount+ " ("+getCategory()+") " + getDescription();
         return strOutput;
     }
 

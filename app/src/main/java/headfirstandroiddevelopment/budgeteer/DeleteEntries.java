@@ -61,7 +61,6 @@ public class DeleteEntries extends ActionBarActivity {
         List<Konto> kontoData = kontoDAO.getAll();
         ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
         for(Konto konto : kontoData) {
-            id = konto.getId();
             adapter.add(konto);
         }
         ListView overview = (ListView) findViewById(R.id.deleteEntries);
@@ -71,7 +70,7 @@ public class DeleteEntries extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = ((TextView)view).getText().toString();
-                Toast.makeText(getBaseContext(), ""+id, Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), ""+item, Toast.LENGTH_LONG).show();
             }
         });
         this.position = overview.getSelectedItemPosition();

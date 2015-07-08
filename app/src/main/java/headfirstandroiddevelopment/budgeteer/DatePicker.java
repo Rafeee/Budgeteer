@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 public class DatePicker extends BaseActivity {
@@ -58,7 +59,10 @@ public class DatePicker extends BaseActivity {
     }
     // click button 'Show Overview'
     public void showOverviewByDate(View v){
+
         Intent intent = new Intent(getApplicationContext(), Overview.class);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        intent.putExtra("spinner", ""+spinner.getSelectedItem());
 
         android.widget.DatePicker datepicker = (android.widget.DatePicker) findViewById(R.id.datepicker);
         int day = datepicker.getDayOfMonth();

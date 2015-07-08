@@ -23,7 +23,9 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -32,7 +34,8 @@
                     android:text="All Entries"
                     android:textStyle="bold"
                     android:textSize="32dp"
-                    android:id="@+id/overviewTitle" />
+                    android:id="@+id/overviewTitle"
+                    android:gravity="center" />
 
                 <View
                     android:layout_width="fill_parent"
@@ -43,16 +46,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="327dp"
                     android:id="@+id/deleteEntries"
-                    android:layout_weight="0.48"
                     android:listSelector="@android:color/holo_blue_light"
-                    android:focusable="true"
-                    android:clickable="true"
-                    android:choiceMode="singleChoice" />
+                    android:state_selected="true"
+                    android:choiceMode="singleChoice"
+                    android:layout_weight="1" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Delete selected"
+                    android:textAllCaps="false"
                     android:id="@+id/button2"
                     android:onClick="showPosition" />
 

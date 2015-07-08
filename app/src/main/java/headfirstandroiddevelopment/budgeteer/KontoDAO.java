@@ -94,6 +94,25 @@ public class KontoDAO extends BaseDAO {
         return kontoByCategory;
     }
 
+    public List<Konto> getKontoByDateAndCategory(int month, int year, String category){
+        Cursor cursor = db.query("konto", new String[]{"day", "month", "year", "amount", "category","description","repeat"},"month = ? AND year = ? AND category = ?", new String[]{String.valueOf(month), String.valueOf(year), category}, null, null, null, null);
+
+        List<Konto> kontoByDateAndCategory = new ArrayList<>();
+
+        while (cursor.moveToNext()){
+            Konto konto = new Konto();
+            konto.setDay(cursor.getInt(0));
+            konto.setMonth(cursor.getInt(1));
+            konto.setYear(cursor.getInt(2));
+            konto.setAmount(cursor.getDouble(3));
+            konto.setCategory(cursor.getString(4));
+            konto.setDescription(cursor.getString(5));
+            konto.setRepeatMonth(cursor.getInt(6));
+            kontoByDateAndCategory.add(konto);
+        }
+        return kontoByDateAndCategory;
+    }
+
     public void deleteKonto(int id){
         String actualId = Integer.toString(id);
         db.delete("konto", "idkonto=?", new String[]{actualId});
