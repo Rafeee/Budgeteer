@@ -81,8 +81,6 @@ public class SettingsActivity extends BaseActivity {
             } else {
                 updatePrefSummary(p);
             }
-
-           SavePreferences("Currency", p);
         }
 
         private void updatePrefSummary(Preference p) {

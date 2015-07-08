@@ -21,16 +21,6 @@ public class Konto {
     private String description;
     private Integer repeatMonth;
 
-<<<<<<< HEAD
-=======
-   /* private void LoadPreferences() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String data = sharedPreferences.getString("name", "08:00");
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApllicationContext());
-          }
-*/
-
->>>>>>> origin/master
     public Konto() {
     }
 

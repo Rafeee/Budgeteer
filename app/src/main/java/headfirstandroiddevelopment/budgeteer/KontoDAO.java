@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -34,6 +35,26 @@ public class KontoDAO extends BaseDAO {
         values.put("repeat", 0);
         String actualId = Integer.toString(id);
         db.update("konto", values, "idkonto=?", new String[]{actualId});
+    }
+
+    public HashMap<Integer, Konto> getAllHash() {
+        /*     db.query = SELECT: Tablename, Stringarray: (PK, where, where values, group by, filter by row groups, sort) */
+        Cursor cursor = db.query("konto", new String[]{"idkonto","day", "month", "year", "amount", "category","description","repeat"}, null, null, null, null, null, null);
+        HashMap<Integer, Konto> kontiAll = new HashMap<>();
+
+        while (cursor.moveToNext()) {
+            Konto konto = new Konto();
+            konto.setId(cursor.getInt(0));
+            konto.setDay(cursor.getInt(1));
+            konto.setMonth(cursor.getInt(2));
+            konto.setYear(cursor.getInt(3));
+            konto.setAmount(cursor.getDouble(4));
+            konto.setCategory(cursor.getString(5));
+            konto.setDescription(cursor.getString(6));
+            konto.setRepeatMonth(cursor.getInt(7));
+            kontiAll.put(konto.getId(), konto);
+        }
+        return kontiAll;
     }
 
     public List<Konto> getAll() {

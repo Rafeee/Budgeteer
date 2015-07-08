@@ -58,8 +58,8 @@
                     android:layout_height="wrap_content"
                     android:text="Delete selected"
                     android:textAllCaps="false"
-                    android:id="@+id/button2"
-                    android:onClick="showPosition" />
+                    android:id="@+id/deleteBtn"
+                    android:onClick="deleteEntry(id)" />
 
             </LinearLayout>
 
