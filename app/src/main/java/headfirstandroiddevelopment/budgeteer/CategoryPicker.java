@@ -1,10 +1,12 @@
 package headfirstandroiddevelopment.budgeteer;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 
 
@@ -70,5 +72,12 @@ public class CategoryPicker extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void showOverview(View v){
+        Intent intent = new Intent (getApplicationContext(), Overview.class);
+        String category = v.getTag().toString();
+        intent.putExtra("category", category);
+        intent.putExtra("lastView", "category");
+        startActivity(intent);
     }
 }

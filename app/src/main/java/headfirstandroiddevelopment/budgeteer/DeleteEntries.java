@@ -17,6 +17,7 @@ import java.util.List;
 
 public class DeleteEntries extends ActionBarActivity {
     private int position=0;
+    private Integer id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +61,7 @@ public class DeleteEntries extends ActionBarActivity {
         List<Konto> kontoData = kontoDAO.getAll();
         ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
         for(Konto konto : kontoData) {
+            id = konto.getId();
             adapter.add(konto);
         }
         ListView overview = (ListView) findViewById(R.id.deleteEntries);
@@ -69,7 +71,7 @@ public class DeleteEntries extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = ((TextView)view).getText().toString();
-                Toast.makeText(getBaseContext(), item , Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), ""+id, Toast.LENGTH_LONG).show();
             }
         });
         this.position = overview.getSelectedItemPosition();
@@ -78,7 +80,7 @@ public class DeleteEntries extends ActionBarActivity {
         kontoDAO.close();
     }
     public void showPosition(View v){
-        Intent intent = new Intent(getApplicationContext(), DeleteEntries.class);
+        Intent intent = new Intent(this, DeleteEntries.class);
         startActivity(intent);
         Toast toast = Toast.makeText(getApplicationContext(), ("Datensatz gelöscht ("+this.position+")"), Toast.LENGTH_LONG);
         toast.show();

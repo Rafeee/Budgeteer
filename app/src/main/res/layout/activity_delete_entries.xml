@@ -44,7 +44,10 @@
                     android:layout_height="327dp"
                     android:id="@+id/deleteEntries"
                     android:layout_weight="0.48"
-                    android:listSelector="@android:color/holo_blue_light" />
+                    android:listSelector="@android:color/holo_blue_light"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:choiceMode="singleChoice" />
 
                 <Button
                     android:layout_width="match_parent"
