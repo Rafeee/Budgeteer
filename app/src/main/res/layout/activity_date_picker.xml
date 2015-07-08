@@ -31,42 +31,42 @@
 
 
             <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0"
-                android:layout_below="@+id/categoryTitle"
-                android:layout_alignParentStart="true" />
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0"
+            android:layout_below="@id/categoryTitle"
+            android:layout_alignParentStart="true" />
 
 
             <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Show Overview"
-        android:id="@+id/button3"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textAllCaps="false"
-        android:onClick="showOverviewByDate" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Overview"
+            android:id="@+id/button3"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textAllCaps="false"
+            android:onClick="showOverviewByDate" />
 
 
             <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0"
-                android:id="@+id/view"
-                android:layout_below="@+id/datepicker"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="88dp" />
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0"
+            android:id="@+id/view"
+            android:layout_below="@+id/datepicker"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="88dp" />
 
 
             <DatePicker
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/datepicker"
-        android:calendarViewShown="false"
-        android:layout_below="@+id/categoryTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/datepicker"
+            android:calendarViewShown="false"
+            android:layout_below="@+id/categoryTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="49dp" />
 
             <Spinner
                 android:layout_width="wrap_content"
