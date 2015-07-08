@@ -11,7 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class SettingsActivity extends BaseActivity {
+public class SettingsActivity extends BaseActivity  {
 
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
@@ -30,14 +30,16 @@ public class SettingsActivity extends BaseActivity {
                 .replace(R.id.content, new SettingsFragment())
                 .commit();
 
-        SharedPreferences sharedPref = getSharedPreferences("settings" , Context.MODE_WORLD_WRITEABLE);
+
+        SharedPreferences sharedPref = getSharedPreferences( , Context.MODE_WORLD_WRITEABLE);
         SharedPreferences.Editor editor = sharedPref.edit();
         String currency = sharedPref.getString("Currency","default value");
 
 
+
     }
 
-    public static class SettingsFragment extends PreferenceFragment {
+    public static class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
