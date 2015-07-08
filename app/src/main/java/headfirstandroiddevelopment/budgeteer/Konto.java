@@ -1,7 +1,9 @@
 package headfirstandroiddevelopment.budgeteer;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -19,6 +21,12 @@ public class Konto {
     private String description;
     private Integer repeatMonth;
 
+    private void LoadPreferences() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String data = sharedPreferences.getString("name", "08:00");
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApllicationContext());
+
+    }
     public Konto() {
     }
 
