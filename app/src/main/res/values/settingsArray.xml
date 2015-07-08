@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="currency">
+        <item>Dollar</item>
+        <item >Euro</item>
+        <item>CHF</item>
+        <item>Pound</item>
+    </string-array>
+    <string-array name="currencyValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item >3</item>
+    </string-array>
+
+</resources>

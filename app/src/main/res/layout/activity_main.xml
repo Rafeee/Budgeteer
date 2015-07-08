@@ -106,7 +106,8 @@
                             android:layout_weight="1"
                             android:padding="25dp"
                             android:scaleType="centerInside"
-                            android:background="#fff3f3f3" />
+                            android:background="#fff3f3f3"
+                            android:longClickable="false" />
 
                     </LinearLayout>
 

@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/schwein_pink"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -19,7 +19,7 @@
         <activity
             android:name=".Category"
             android:label="@string/app_name"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".Overview"
@@ -36,6 +36,10 @@
         <activity
             android:name=".CategoryPicker"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" >
         </activity>
     </application>
 

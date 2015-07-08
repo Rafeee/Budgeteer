@@ -1,5 +1,8 @@
 package headfirstandroiddevelopment.budgeteer;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -59,6 +62,7 @@ public class Konto {
     public void setCategory(String category) {this.category = category;}
 
     public void setDescription(String description) {this.description = description;}
+
 
 
     public String toString() {

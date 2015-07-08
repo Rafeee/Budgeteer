@@ -3,8 +3,10 @@ package headfirstandroiddevelopment.budgeteer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -17,13 +19,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Map;
 
 
 public class BaseActivity extends ActionBarActivity {
-
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -150,18 +152,18 @@ public class BaseActivity extends ActionBarActivity {
             case 0:
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
-                finish();
                 break;
             case 1:
                 Intent intent1 = new Intent(this, DatePicker.class);
                 startActivity(intent1);
-                finish();
                 break;
             case 2:
                 Intent intent2 = new Intent(this, CategoryPicker.class);
                 startActivity(intent2);
-                finish();
                 break;
+            case 3:
+                Intent intent3 = new Intent(this, SettingsActivity.class);
+                startActivity(intent3);
             default:
                 break;
         }
@@ -196,4 +198,8 @@ public class BaseActivity extends ActionBarActivity {
         // Pass any configuration change to the drawer toggles
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
+
 }
+
+
