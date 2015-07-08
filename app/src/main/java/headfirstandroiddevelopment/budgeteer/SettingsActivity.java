@@ -82,6 +82,7 @@ public class SettingsActivity extends BaseActivity {
                 updatePrefSummary(p);
             }
 
+           SavePreferences("Currency", p);
         }
 
         private void updatePrefSummary(Preference p) {
@@ -97,6 +98,14 @@ public class SettingsActivity extends BaseActivity {
                     p.setSummary(editTextPref.getText());
                 }
             }
+        }
+
+        private void SavePreferences(String key, String value) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(key, value);
+            editor.commit();
         }
 
     }
@@ -122,12 +131,6 @@ public class SettingsActivity extends BaseActivity {
             return super.onOptionsItemSelected(item);
         }
 
-        private void SavePreferences(String key, String value) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(key, value);
-        editor.commit();
-    }
 
 }
