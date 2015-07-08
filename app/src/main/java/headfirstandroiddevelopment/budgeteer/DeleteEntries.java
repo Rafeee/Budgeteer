@@ -63,15 +63,17 @@ public class DeleteEntries extends ActionBarActivity {
             adapter.add(konto);
         }
         ListView overview = (ListView) findViewById(R.id.deleteEntries);
+        overview.setAdapter(adapter);
         //TODO onItemClickListener der position / idkonto zurückgibt
         overview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                String item = ((TextView)view).getText().toString();
+                Toast.makeText(getBaseContext(), item , Toast.LENGTH_LONG).show();
             }
         });
         this.position = overview.getSelectedItemPosition();
-        overview.setAdapter(adapter);
+
 
         kontoDAO.close();
     }
