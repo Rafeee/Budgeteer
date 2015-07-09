@@ -218,7 +218,8 @@ public class Overview extends BaseActivity {
                 result += konto.getAmount();
             }else {
                 result -= konto.getAmount();
-            }        }
+            }
+        }
 
 
         if (currency.equals("0")) {
