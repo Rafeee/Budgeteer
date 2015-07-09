@@ -49,15 +49,17 @@
                     android:listSelector="@android:color/holo_blue_light"
                     android:state_selected="true"
                     android:choiceMode="singleChoice"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:focusable="false" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Delete selected"
                     android:textAllCaps="false"
-                    android:id="@+id/button2"
-                    android:onClick="showPosition" />
+                    android:id="@+id/deleteBtn"
+                    android:onClick="deleteEntry(id)" />
 
             </LinearLayout>
 

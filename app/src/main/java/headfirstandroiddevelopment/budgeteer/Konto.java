@@ -29,9 +29,8 @@ public class Konto {
 
     public Konto(Context context) {
         this.context=context;
-    }
-
-
+		
+	}
     public int getId() {
         return id;
     }
@@ -85,7 +84,6 @@ public class Konto {
     public void setRepeatMonth(Integer repeatMonth) {
         this.repeatMonth = repeatMonth;
     }
-
 
     public String toString() {
 

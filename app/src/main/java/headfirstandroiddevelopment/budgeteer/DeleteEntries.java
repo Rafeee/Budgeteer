@@ -8,29 +8,45 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.List;
 
 
 public class DeleteEntries extends ActionBarActivity {
     private int position=0;
-    private Integer id;
+    private Integer selectedKontoId;
+    private ArrayAdapter<Konto> adapter;
+    private HashMap<Integer, Konto> kontoData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_entries);
-
-        //deleteEntry(2); Funktioniert
+        Button deleteBtn = (Button) findViewById(R.id.deleteBtn);
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedKontoId == 0) {
+                    Toast.makeText(getApplicationContext(), "Please select Entry", Toast.LENGTH_LONG).show();
+                } else {
+                    deleteEntry(selectedKontoId);
+                    adapter.remove(kontoData.get(selectedKontoId));
+                    kontoData.remove(selectedKontoId);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         getAllEntries();
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,9 +74,10 @@ public class DeleteEntries extends ActionBarActivity {
         KontoDAO kontoDAO = new KontoDAO(this);
         kontoDAO.openReadable();
 
-        List<Konto> kontoData = kontoDAO.getAll();
-        ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
-        for(Konto konto : kontoData) {
+        kontoData= kontoDAO.getAllHash();
+
+        adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
+        for(Konto konto : kontoData.values()) {
             adapter.add(konto);
         }
         ListView overview = (ListView) findViewById(R.id.deleteEntries);
@@ -70,12 +87,11 @@ public class DeleteEntries extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = ((TextView)view).getText().toString();
-                Toast.makeText(getBaseContext(), ""+item, Toast.LENGTH_LONG).show();
+                Konto konto = (Konto) parent.getItemAtPosition(position);
+                selectedKontoId = konto.getId();
             }
         });
         this.position = overview.getSelectedItemPosition();
-
-
         kontoDAO.close();
     }
     public void showPosition(View v){
@@ -87,12 +103,7 @@ public class DeleteEntries extends ActionBarActivity {
     public void deleteEntry(int id){
         KontoDAO kontoDAO = new KontoDAO(this);
         kontoDAO.openWritable();
-
-        List<Konto> kontoData = kontoDAO.getAll();
-
-        for (Konto konto : kontoData){
-            if (konto.getId() == id ){
-                kontoDAO.deleteKonto(id);}
-        }
+        kontoDAO.deleteKonto(id);
+        kontoDAO.close();
     }
 }

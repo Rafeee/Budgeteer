@@ -15,14 +15,15 @@
         <item>Edit</item>
         <item>Settings</item>
     </string-array>
+
     <array name="nav_drawer_icons">
         <item>@drawable/home</item>
         <item>@drawable/calendar</item>
         <item>@drawable/category</item>
-        <item>@drawable/category</item>
+        <item>@drawable/edit</item>
         <item>@drawable/settings</item>
-
     </array>
+
     <string-array name="spinner">
         <item>-</item>
         <item>Apartment</item>
