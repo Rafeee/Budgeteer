@@ -2,9 +2,11 @@ package headfirstandroiddevelopment.budgeteer;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -34,6 +36,7 @@ public class Overview extends BaseActivity {
 
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
+    private Locale swiss = new Locale("de","CH");
 
     private int day;
     private int month;
@@ -166,6 +169,11 @@ public class Overview extends BaseActivity {
     public void generateResult(List<Konto> kontoData){
         Double result = 0.;
         ArrayAdapter adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String currency = preferences.getString("Currency", "0");
+        NumberFormat formatter = null;
+
+
         for(Konto konto : kontoData){
             adapter.add(konto);
             if (konto.getCategory().equals("Income")){
@@ -173,7 +181,18 @@ public class Overview extends BaseActivity {
             }else {
                 result -= konto.getAmount();
             }        }
-        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+
+
+        if (currency.equals("0")) {
+            formatter = NumberFormat.getCurrencyInstance(Locale.US);
+        } else if (currency.equals("1")) {
+            formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+        } else if (currency.equals("2")) {
+            formatter = NumberFormat.getCurrencyInstance(Locale.UK);
+        } else if (currency.equals("3")) {
+            formatter = NumberFormat.getCurrencyInstance(swiss);
+        }
+
         String formatResult = formatter.format(result);
         TextView tvResult = (TextView) findViewById(R.id.result);
         if (result < 0.0) {

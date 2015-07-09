@@ -34,8 +34,6 @@ public class SettingsActivity extends BaseActivity {
                 .replace(R.id.content, new SettingsFragment())
                 .commit();
 
-
-
     }
 
     public static class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -82,7 +80,6 @@ public class SettingsActivity extends BaseActivity {
                 updatePrefSummary(p);
             }
 
-           SavePreferences("Currency", p);
         }
 
         private void updatePrefSummary(Preference p) {
@@ -100,13 +97,6 @@ public class SettingsActivity extends BaseActivity {
             }
         }
 
-        private void SavePreferences(String key, String value) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(key, value);
-            editor.commit();
-        }
 
     }
         @Override

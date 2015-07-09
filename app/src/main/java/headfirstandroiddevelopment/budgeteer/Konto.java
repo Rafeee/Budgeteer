@@ -1,5 +1,6 @@
 package headfirstandroiddevelopment.budgeteer;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -7,6 +8,8 @@ import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.Locale;
+
+import static android.app.PendingIntent.getActivity;
 
 /**
  * Created by bklemr on 26.06.2015.
@@ -20,16 +23,14 @@ public class Konto {
     private String category;
     private String description;
     private Integer repeatMonth;
+    private Locale swiss = new Locale("de","CH");
+    private  Context context;
 
-   /* private void LoadPreferences() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String data = sharedPreferences.getString("name", "08:00");
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApllicationContext());
-          }
-*/
 
-    public Konto() {
+    public Konto(Context context) {
+        this.context=context;
     }
+
 
     public int getId() {
         return id;
@@ -87,7 +88,21 @@ public class Konto {
 
 
     public String toString() {
-        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String currency = preferences.getString("Currency", "0");
+        NumberFormat formatter = null;
+
+        if (currency.equals("0")) {
+            formatter = NumberFormat.getCurrencyInstance(Locale.US);
+        } else if (currency.equals("1")) {
+            formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+        } else if (currency.equals("2")) {
+            formatter = NumberFormat.getCurrencyInstance(Locale.UK);
+        } else if (currency.equals("3")) {
+            formatter = NumberFormat.getCurrencyInstance(swiss);
+        }
+
         String formamount = formatter.format(getAmount());
         String strOutput = getDay() + "." + getMonth() + "." + getYear() + ": " +formamount+ " ("+getCategory()+") " + getDescription();
         return strOutput;
@@ -96,4 +111,6 @@ public class Konto {
     public void setId(int id) {
         this.id = id;
     }
+
+
 }
