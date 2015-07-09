@@ -12,10 +12,15 @@ import java.util.List;
  * Created by bklemr on 26.06.2015.
  */
 public class KontoDAO extends BaseDAO {
+    private Context context;
 
-    public KontoDAO(Context context) {
+
+    public KontoDAO(Context context)
+    {
         super(context);
+        this.context=context;
     }
+
 
     public long insertKonto(Konto konto) {
         ContentValues values = new ContentValues();
@@ -43,7 +48,7 @@ public class KontoDAO extends BaseDAO {
         HashMap<Integer, Konto> kontiAll = new HashMap<>();
 
         while (cursor.moveToNext()) {
-            Konto konto = new Konto();
+            Konto konto = new Konto(context);
             konto.setId(cursor.getInt(0));
             konto.setDay(cursor.getInt(1));
             konto.setMonth(cursor.getInt(2));
@@ -63,7 +68,7 @@ public class KontoDAO extends BaseDAO {
         List<Konto> kontiAll = new ArrayList<>();
 
         while (cursor.moveToNext()) {
-            Konto konto = new Konto();
+            Konto konto = new Konto(context);
             konto.setId(cursor.getInt(0));
             konto.setDay(cursor.getInt(1));
             konto.setMonth(cursor.getInt(2));
@@ -83,7 +88,7 @@ public class KontoDAO extends BaseDAO {
         List<Konto> kontoByDate = new ArrayList<>();
 
         while (cursor.moveToNext()){
-            Konto konto = new Konto();
+            Konto konto = new Konto(context);
             konto.setDay(cursor.getInt(0));
             konto.setMonth(cursor.getInt(1));
             konto.setYear(cursor.getInt(2));
@@ -102,7 +107,7 @@ public class KontoDAO extends BaseDAO {
         List<Konto> kontoByCategory = new ArrayList<>();
 
         while (cursor.moveToNext()){
-            Konto konto = new Konto();
+            Konto konto = new Konto(context);
             konto.setDay(cursor.getInt(0));
             konto.setMonth(cursor.getInt(1));
             konto.setYear(cursor.getInt(2));
@@ -121,7 +126,7 @@ public class KontoDAO extends BaseDAO {
         List<Konto> kontoByDateAndCategory = new ArrayList<>();
 
         while (cursor.moveToNext()){
-            Konto konto = new Konto();
+            Konto konto = new Konto(context);
             konto.setDay(cursor.getInt(0));
             konto.setMonth(cursor.getInt(1));
             konto.setYear(cursor.getInt(2));

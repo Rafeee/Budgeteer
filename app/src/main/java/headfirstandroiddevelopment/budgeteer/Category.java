@@ -104,7 +104,7 @@ public class Category extends BaseActivity {
             int year = datepicker.getYear();
             String date = day+"."+month+"."+year;
 
-            Konto konto = new Konto();
+            Konto konto = new Konto(this);
             konto.setDay(day);
             konto.setMonth(month);
             konto.setYear(year);

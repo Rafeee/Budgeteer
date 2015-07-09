@@ -2,6 +2,7 @@ package headfirstandroiddevelopment.budgeteer;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.preference.PreferenceManager;
@@ -33,6 +34,8 @@ import java.util.Locale;
 public class MainActivity extends BaseActivity {
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
+    private Locale swiss = new Locale("de","CH");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,18 +153,32 @@ public class MainActivity extends BaseActivity {
 
     public void showInputs() {
         Intent intent = getIntent();
+
+
         if (intent.hasExtra("amount")) {
             String date = intent.getStringExtra("date");
             Double amount = intent.getDoubleExtra("amount", 1.0);
             String category = intent.getStringExtra("name");
             String time = intent.getStringExtra("time");
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            String currency = preferences.getString("Currency", "0");
+            NumberFormat formatter = null;
 
-            NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+            if (currency.equals("0")) {
+                formatter = NumberFormat.getCurrencyInstance(Locale.US);
+            } else if (currency.equals("1")) {
+                formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+            } else if (currency.equals("2")) {
+                formatter = NumberFormat.getCurrencyInstance(Locale.UK);
+            } else if (currency.equals("3")) {
+                formatter = NumberFormat.getCurrencyInstance(swiss);
+            }
+
             String formamount = formatter.format(amount);
 
             // Dem User mitteilen, was gespeichert wurde
             String message = String.valueOf(formamount + " saved in '" + category + "' \n on " + String.valueOf(date));
-
+            // Mit for Schleife die Dauer des Toasts verdoppeln
             final Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
             LinearLayout layout = (LinearLayout) toast.getView();
             if (layout.getChildCount() > 0) {
@@ -171,6 +188,7 @@ public class MainActivity extends BaseActivity {
             }
         }
     }
+
     public void openCategory(View v) {
 
         Intent intent = new Intent(getApplicationContext(), Category.class);
@@ -227,4 +245,5 @@ public class MainActivity extends BaseActivity {
 
         startActivity(intent);
     }
+
 }

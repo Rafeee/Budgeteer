@@ -5,9 +5,9 @@
  <PreferenceCategory>
 
      <ListPreference
-         android:key="Curreny"
+         android:key="Currency"
          android:title="Currency"
-         android:defaultValue=""
+         android:defaultValue="1"
          android:summary=""
          android:entries="@array/currency"
          android:entryValues="@array/currencyValues"
