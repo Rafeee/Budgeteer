@@ -42,25 +42,48 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="313dp"
-                android:layout_weight="0.67">
+                android:layout_height="fill_parent"
+                android:layout_weight="0.15">
 
                 <ListView
                     android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:id="@+id/listoverview"
-                    android:layout_weight="0.48" />
+                    android:layout_weight="0.48"
+                    android:numColumns="3"
+                    android:listSelector="#952980b9"
+                    android:drawSelectorOnTop="true" />
             </RelativeLayout>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:id="@+id/result"
-                android:layout_weight="0.46"
-                android:layout_gravity="center"
-                android:gravity="center_vertical|center_horizontal" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.8"
+                android:layout_gravity="bottom">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Large Text"
+                    android:id="@+id/result"
+                    android:layout_weight="0.46"
+                    android:layout_gravity="center"
+                    android:gravity="left|center_vertical"
+                    android:layout_alignBottom="@+id/btnDelete"
+                    android:layout_alignParentStart="false"
+                    android:layout_alignParentTop="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete"
+                    android:id="@+id/btnDelete"
+                    android:layout_alignParentEnd="true"
+                    android:textAllCaps="false"
+                    android:onClick="deleteEntry(id)" />
+
+            </RelativeLayout>
 
         </LinearLayout>
 

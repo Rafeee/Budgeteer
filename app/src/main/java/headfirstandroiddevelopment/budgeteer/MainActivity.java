@@ -39,8 +39,8 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
-        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
 
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
         set(navMenuTitles, navMenuIcons);
 
@@ -156,15 +156,12 @@ public class MainActivity extends BaseActivity {
             String category = intent.getStringExtra("name");
             String time = intent.getStringExtra("time");
 
-            // Betrag als Euro formatieren
-            // TODO: Verschiedene Währungen unterscheiden
             NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
             String formamount = formatter.format(amount);
 
             // Dem User mitteilen, was gespeichert wurde
-            String message = String.valueOf(formamount + " saved in '" + category + "' \n on " + String.valueOf(date)+" heute: "+time);
-            // Mit for Schleife die Dauer des Toasts verdoppeln
-            /*for (int i = 0; i < 2; i++) {*/
+            String message = String.valueOf(formamount + " saved in '" + category + "' \n on " + String.valueOf(date));
+
             final Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
             LinearLayout layout = (LinearLayout) toast.getView();
             if (layout.getChildCount() > 0) {

@@ -18,14 +18,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -40,8 +44,9 @@ public class Overview extends BaseActivity {
     private int year;
     private String category;
     private String strMonth;
-    private Boolean repeat;
-
+    private Integer selectedKontoId;
+    private ArrayAdapter<Konto> adapter;
+    private HashMap<Integer, Konto> kontoData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +109,39 @@ public class Overview extends BaseActivity {
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items); // load titles from strings.xml
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);//load icons from strings.xml
         set(navMenuTitles, navMenuIcons);
+
+        ListView overview = (ListView) findViewById(R.id.listoverview);
+        final Button deleteBtn = (Button) findViewById(R.id.btnDelete);
+        deleteBtn.setVisibility(View.INVISIBLE);
+        overview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Konto konto = (Konto) parent.getItemAtPosition(position);
+                selectedKontoId = konto.getId();
+                deleteBtn.setVisibility(View.VISIBLE);
+            }
+        });
+        KontoDAO kontoDAO = new KontoDAO(this);
+        kontoDAO.openReadable();
+        kontoData = kontoDAO.getAllHash();
+        adapter = new ArrayAdapter<Konto>(this, android.R.layout.simple_list_item_1);
+        for (Konto konto : kontoData.values()) {
+            adapter.add(konto);
+        }
+        overview.setAdapter(adapter);
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedKontoId == 0) {
+                    Toast.makeText(getApplicationContext(), "Please select Entry", Toast.LENGTH_LONG).show();
+                } else {
+                    deleteEntry(selectedKontoId);
+                    adapter.remove(kontoData.get(selectedKontoId));
+                    kontoData.remove(selectedKontoId);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     @Override
@@ -184,5 +222,11 @@ public class Overview extends BaseActivity {
         tvResult.setText("Total: " + formatResult);
         ListView overview = (ListView) findViewById(R.id.listoverview);
         overview.setAdapter(adapter);
+    }
+    public void deleteEntry(int id) {
+        KontoDAO kontoDAO = new KontoDAO(this);
+        kontoDAO.openWritable();
+        kontoDAO.deleteKonto(id);
+        kontoDAO.close();
     }
 }

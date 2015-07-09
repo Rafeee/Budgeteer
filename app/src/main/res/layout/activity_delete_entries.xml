@@ -46,12 +46,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="327dp"
                     android:id="@+id/deleteEntries"
-                    android:listSelector="@android:color/holo_blue_light"
                     android:state_selected="true"
-                    android:choiceMode="singleChoice"
                     android:layout_weight="1"
                     android:clickable="false"
-                    android:focusable="false" />
+                    android:headerDividersEnabled="false"
+                    android:drawSelectorOnTop="true"
+                    android:listSelector="#952980b9"/>
 
                 <Button
                     android:layout_width="match_parent"
@@ -59,7 +59,8 @@
                     android:text="Delete selected"
                     android:textAllCaps="false"
                     android:id="@+id/deleteBtn"
-                    android:onClick="deleteEntry(id)" />
+                    android:onClick="deleteEntry(id)"
+                    android:enabled="true" />
 
             </LinearLayout>
 
